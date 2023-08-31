@@ -5,8 +5,11 @@
 
     <color name="primary">#9C21BD</color>
 
-    <color name="fragment_background_color">@color/white</color>
-    <color name="toast_background_color">@color/primary</color>
-    <color name="progress_bar_color">@color/primary</color>
-    <color name="icon_update_color">@color/black</color>
+    <color name="fragment_background">@color/white</color>
+    <color name="toast_background">@color/primary</color>
+    <color name="progress_bar">@color/primary</color>
+    <color name="icon_update">@color/black</color>
+    <color name="star_layout_text">#FFA800</color>
+    <color name="star_layout">#33FFA800</color>
+    <color name="hotel_address_text_view">#0D72FF</color>
 </resources>

@@ -37,9 +37,18 @@ class HotelFragment: Fragment() {
                 progressBar.visibility = View.GONE
 
                 if (hotelNull != null) {
-                    val hotelPhotoAdapter = HotelPhotoAdapter(imageUrls = hotelNull.imageUrls)
-                    viewPager.adapter = hotelPhotoAdapter
-                    textView.text = "${hotelNull.name}\n${hotelNull.address}"
+                    showAllViews()
+
+                    hotelNull.let {
+                        // Photos
+                        val hotelPhotoAdapter = HotelPhotoAdapter(imageUrls = it.imageUrls)
+                        viewPager.adapter = hotelPhotoAdapter
+                        // Rating
+                        textViewRating.text = it.rating.toString()
+                        textViewRatingName.text = it.ratingName
+                        textViewHotelName.text = it.name
+                        textViewHotelAddress.text = it.address
+                    }
                 }else {
                     requireContext().showShortToast(message = getString(R.string.toast_error_load_hotel_info))
                 }
@@ -54,6 +63,12 @@ class HotelFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    private fun showAllViews() {
+        with(binding ?: return) {
+            starLinearLayout.visibility = View.VISIBLE
+        }
     }
 
     private inner class HotelPhotoAdapter(

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="view_pager_margin_start_end">16dp</dimen>
-    <dimen name="view_pager_height">257dp</dimen>
+<!--    HotelFragment-->
+    <dimen name="hotel_fragment_margin_start_end_elements">16dp</dimen>
+    <dimen name="hotel_fragment_icon_update_sizes">130dp</dimen>
+    <dimen name="hotel_fragment_margin_top_elements">10dp</dimen>
+    <dimen name="hotel_fragment_text_view_hotel_name_size">22sp</dimen>
+    <dimen name="hotel_fragment_text_view_hotel_address_size">14sp</dimen>
 </resources>

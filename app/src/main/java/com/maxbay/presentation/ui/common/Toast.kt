@@ -11,7 +11,7 @@ fun Context.showShortToast(message: String) {
     with(StyleableToast.Builder(this)) {
         text(message)
         textColor(Color.WHITE)
-        backgroundColor(ContextCompat.getColor(this@showShortToast, R.color.toast_background_color))
+        backgroundColor(ContextCompat.getColor(this@showShortToast, R.color.toast_background))
         gravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL)
 
         show()
