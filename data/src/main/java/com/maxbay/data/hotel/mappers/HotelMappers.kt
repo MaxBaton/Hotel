@@ -23,13 +23,13 @@ fun Hotel.mapToHotelData(): HotelData {
     return HotelData(
         id = this.id,
         name = this.name,
-        aboutTheHotelData = this.aboutTheHotel.mapToAboutTheHotelData(),
-        address = this.address,
-        imageUrls = this.imageUrls,
-        minimalPrice = this.minimalPrice,
-        priceForIt = this.priceForIt,
+        about_the_hotel = this.aboutTheHotel.mapToAboutTheHotelData(),
+        adress = this.address,
+        image_urls = this.imageUrls,
+        minimal_price = this.minimalPrice,
+        price_for_it = this.priceForIt,
         rating = this.rating,
-        ratingName = this.ratingName
+        rating_name = this.ratingName
     )
 }
 
@@ -37,12 +37,12 @@ fun HotelData.mapToHotel(): Hotel {
     return Hotel(
         id = this.id,
         name = this.name,
-        aboutTheHotel = this.aboutTheHotelData.mapToAboutTheHotel(),
-        address = this.address,
-        imageUrls = this.imageUrls,
-        minimalPrice = this.minimalPrice,
-        priceForIt = this.priceForIt,
+        aboutTheHotel = this.about_the_hotel.mapToAboutTheHotel(),
+        address = this.adress,
+        imageUrls = this.image_urls,
+        minimalPrice = this.minimal_price,
+        priceForIt = this.price_for_it,
         rating = this.rating,
-        ratingName = this.ratingName
+        ratingName = this.rating_name
     )
 }

@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentHotelBinding
+import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.hotel.HotelViewModel
 
 class HotelFragment: Fragment() {
@@ -25,11 +27,15 @@ class HotelFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding ?: return) {
-            /*hotelViewModel.hotelLiveData.observe(viewLifecycleOwner) { hotelNull ->
-                hotelNull?.let { hotel ->
+            hotelViewModel.hotelLiveData.observe(viewLifecycleOwner) { hotelNull ->
+                progressBar.visibility = View.GONE
 
+                if (hotelNull != null) {
+                    textView.text = "${hotelNull.name}\n${hotelNull.address}"
+                }else {
+                    requireContext().showShortToast(message = getString(R.string.toast_error_load__hotel_info))
                 }
-            }*/
+            }
         }
     }
 

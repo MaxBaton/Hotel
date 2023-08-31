@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Hotel</string>
+
+<!--    Toasts-->
+    <string name="toast_error_load__hotel_info">Ошибка загрузки данных об отеле!</string>
 </resources>

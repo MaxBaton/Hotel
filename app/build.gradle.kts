@@ -64,6 +64,9 @@ dependencies {
     val navVersion = "2.6.0"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    // StyleableToast
+    implementation("io.github.muddz:styleabletoast:2.4.0")
 }
 
 kapt {
