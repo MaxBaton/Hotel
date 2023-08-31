@@ -2,6 +2,8 @@
     <string name="app_name">Hotel</string>
 
 <!--    Toasts-->
-    <string name="toast_error_load__hotel_info">Ошибка загрузки данных об отеле!</string>
-    <string name="toast_error_load__rooms_info">Ошибка загрузки данных о номерах!</string>
+    <string name="toast_error_load_hotel_info">Ошибка загрузки данных об отеле!</string>
+    <string name="toast_error_load_rooms_info">Ошибка загрузки данных о номерах!</string>
+    <string name="toast_error_load_booking_info">Ошибка загрузки данных о бронировании!</string>
+    <string name="toast_error_load_price_info">Ошибка загрузки данных о ценах!</string>
 </resources>

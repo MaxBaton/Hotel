@@ -34,7 +34,7 @@ class HotelFragment: Fragment() {
                 if (hotelNull != null) {
                     textView.text = "${hotelNull.name}\n${hotelNull.address}"
                 }else {
-                    requireContext().showShortToast(message = getString(R.string.toast_error_load__hotel_info))
+                    requireContext().showShortToast(message = getString(R.string.toast_error_load_hotel_info))
                 }
             }
 

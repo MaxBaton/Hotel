@@ -30,8 +30,12 @@ class RoomsFragment: Fragment() {
                 if (rooms.isNotEmpty()) {
                     textView.text = rooms.map { it.name }.joinToString("\n")
                 }else {
-                    requireContext().showShortToast(message = getString(R.string.toast_error_load__rooms_info))
+                    requireContext().showShortToast(message = getString(R.string.toast_error_load_rooms_info))
                 }
+            }
+
+            btnNext.setOnClickListener {
+                findNavController().navigate(R.id.action_roomsFragment_to_bookingFragment)
             }
 
             btnBack.setOnClickListener {

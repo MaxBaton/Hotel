@@ -18,5 +18,14 @@
         android:id="@+id/roomsFragment"
         android:name="com.maxbay.presentation.ui.room.RoomsFragment"
         android:label="RoomsFragment"
-        tools:layout="@layout/fragment_rooms"/>
+        tools:layout="@layout/fragment_rooms">
+        <action
+            android:id="@+id/action_roomsFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.maxbay.presentation.ui.booking.BookingFragment"
+        android:label="BookingFragment"
+        tools:layout="@layout/fragment_booking"/>
 </navigation>
