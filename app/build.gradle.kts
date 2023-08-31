@@ -67,6 +67,9 @@ dependencies {
 
     // StyleableToast
     implementation("io.github.muddz:styleabletoast:2.4.0")
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.13.2")
 }
 
 kapt {

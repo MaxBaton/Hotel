@@ -6,10 +6,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/fragment_background_color">
 
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar_without_button_back"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/view_pager_height"
+        app:layout_constraintTop_toBottomOf="@id/action_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/view_pager_margin_start_end"
+        android:layout_marginEnd="@dimen/view_pager_margin_start_end"
+        />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         style="@style/Hotel_ProgressBarLoadingDataFragment"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/action_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -22,7 +38,7 @@
         tools:text="HotelFragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_pager"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
@@ -30,8 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="next"
-        android:textSize="30sp"
-        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/text_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
