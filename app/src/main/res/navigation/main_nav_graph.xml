@@ -27,5 +27,14 @@
         android:id="@+id/bookingFragment"
         android:name="com.maxbay.presentation.ui.booking.BookingFragment"
         android:label="BookingFragment"
-        tools:layout="@layout/fragment_booking"/>
+        tools:layout="@layout/fragment_booking">
+        <action
+            android:id="@+id/action_bookingFragment_to_paidFragment"
+            app:destination="@id/paidFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paidFragment"
+        android:name="com.maxbay.presentation.ui.paid.PaidFragment"
+        android:label="PaidFragment"
+        tools:layout="@layout/fragment_paid"/>
 </navigation>

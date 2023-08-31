@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Hotel</string>
 
+<!--    PaidFragment-->
+    <string name="paid_fragment_title">Ваш заказ принят в работу</string>
+    <string name="paid_fragment_message">Подтверждение заказа №%1$d может занять некоторое время (от 1 часа до суток).
+        Как только мы получим ответ от туроператора, Вам на почту придет уведомление.</string>
+
 <!--    Toasts-->
     <string name="toast_error_load_hotel_info">Ошибка загрузки данных об отеле!</string>
     <string name="toast_error_load_rooms_info">Ошибка загрузки данных о номерах!</string>

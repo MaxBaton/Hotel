@@ -42,6 +42,10 @@ class BookingFragment: Fragment() {
                 }
             }
 
+            btnNext.setOnClickListener {
+                findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
+            }
+
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
