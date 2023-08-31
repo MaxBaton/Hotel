@@ -6,7 +6,7 @@ import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
 

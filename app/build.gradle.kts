@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    kotlin("kapt")
     id("com.google.dagger.hilt.android")
 }
 
@@ -55,7 +55,7 @@ dependencies {
     // Hilt
     val hiltVersion = "2.44"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     // ViewModel
     implementation("androidx.fragment:fragment-ktx:1.6.1")
@@ -64,4 +64,8 @@ dependencies {
     val navVersion = "2.6.0"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+}
+
+kapt {
+    correctErrorTypes = true
 }

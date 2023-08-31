@@ -25,11 +25,11 @@ class HotelFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding ?: return) {
-            hotelViewModel.hotelLiveData.observe(viewLifecycleOwner) { hotelNull ->
+            /*hotelViewModel.hotelLiveData.observe(viewLifecycleOwner) { hotelNull ->
                 hotelNull?.let { hotel ->
 
                 }
-            }
+            }*/
         }
     }
 

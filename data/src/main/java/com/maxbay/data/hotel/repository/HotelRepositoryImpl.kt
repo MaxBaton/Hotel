@@ -7,6 +7,10 @@ import com.maxbay.domain.hotel.repository.HotelRepository
 
 class HotelRepositoryImpl(private val hotelStorage: HotelStorage): HotelRepository {
     override suspend fun getHotelInfo(): Hotel? {
-        return hotelStorage.getHotelInfo()?.mapToHotel()
+        return try {
+            hotelStorage.getHotelInfo()?.mapToHotel()
+        }catch (e: Exception) {
+            null
+        }
     }
 }
