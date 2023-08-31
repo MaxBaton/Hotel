@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentHotelBinding
 import com.maxbay.presentation.ui.common.showShortToast
@@ -35,6 +36,10 @@ class HotelFragment: Fragment() {
                 }else {
                     requireContext().showShortToast(message = getString(R.string.toast_error_load__hotel_info))
                 }
+            }
+
+            btnNext.setOnClickListener {
+                findNavController().navigate(R.id.action_hotelFragment_to_roomsFragment)
             }
         }
     }

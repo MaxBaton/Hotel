@@ -1,7 +1,9 @@
 package com.maxbay.data.room.repository
 
+import android.util.Log
 import com.maxbay.data.room.mappers.mapToListRoom
 import com.maxbay.data.room.storage.RoomStorage
+import com.maxbay.domain.other.Constants
 import com.maxbay.domain.room.models.Room
 import com.maxbay.domain.room.repository.RoomRepository
 
@@ -10,6 +12,7 @@ class RoomRepositoryImpl(private val roomStorage: RoomStorage): RoomRepository {
         return try {
             roomStorage.getRooms()?.mapToListRoom()
         }catch (e: Exception) {
+            Log.d(Constants.Logs.OTHER_ERROR, e.message.toString())
             null
         }
     }

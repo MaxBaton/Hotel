@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentRoomsBinding
+import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.room.RoomViewModel
 
 class RoomsFragment: Fragment() {
@@ -22,8 +25,17 @@ class RoomsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding ?: return) {
             roomViewModel.roomsLiveData.observe(viewLifecycleOwner) { rooms ->
-                val size = rooms.size
-                textView.text = "size = $size"
+                progressBar.visibility = View.GONE
+
+                if (rooms.isNotEmpty()) {
+                    textView.text = rooms.map { it.name }.joinToString("\n")
+                }else {
+                    requireContext().showShortToast(message = getString(R.string.toast_error_load__rooms_info))
+                }
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

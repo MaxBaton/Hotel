@@ -3,4 +3,5 @@
 
 <!--    Toasts-->
     <string name="toast_error_load__hotel_info">Ошибка загрузки данных об отеле!</string>
+    <string name="toast_error_load__rooms_info">Ошибка загрузки данных о номерах!</string>
 </resources>
