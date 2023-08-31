@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object AppRetrofit {
-    private const val BASE_URL = "https://run.mocky.io/v3"
+    private const val BASE_URL = "https://run.mocky.io/v3/"
     private const val CONNECT_TIMEOUT: Long = 5
     private const val READ_TIMEOUT: Long = 5
     private const val WRITE_TIMEOUT: Long = 5

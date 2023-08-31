@@ -26,10 +26,12 @@ class HotelViewModel @Inject constructor(
 
     private fun getHotelInfo() {
         viewModelScope.launch {
-            val hotel = withContext(Dispatchers.IO) {
-                getHotelInfo.get()
+            withContext(Dispatchers.IO) {
+                val hotel = getHotelInfo.get()
+                withContext(Dispatchers.Main) {
+                    hotelMutableLiveData.postValue(hotel)
+                }
             }
-            hotelMutableLiveData.postValue(hotel)
         }
     }
 }
