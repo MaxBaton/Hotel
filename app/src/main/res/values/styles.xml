@@ -19,5 +19,6 @@
         <item name="android:textSize">@dimen/round_button_text_size</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/round_corners_button</item>
+        <item name="backgroundTint">@null</item>
     </style>
 </resources>

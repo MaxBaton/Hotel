@@ -2,7 +2,7 @@
     <string name="app_name">Hotel</string>
 
 <!--    HotelFragment-->
-    <string name="hotel_fragment_min_price">от %1$d</string>
+    <string name="hotel_fragment_min_price">от %1$d \u20BD</string>
     <string name="hotel_fragment_select_room_button">К выбору номера</string>
     <string name="hotel_fragment_about_hotel_title">Об отеле</string>
 <!--    Actions-->

@@ -54,6 +54,8 @@ class HotelFragment: Fragment() {
                 progressBar.visibility = View.GONE
 
                 if (hotelWithNull != null) {
+                    showAllViews()
+
                     populateAdapter(hotel = hotelWithNull)
                     recyclerView.let {
                         it.adapter = groupieAdapter
@@ -109,6 +111,12 @@ class HotelFragment: Fragment() {
                 subtitle = getString(R.string.hotel_fragment_action_subtitle)
             )
         )
+    }
+
+    private fun showAllViews() {
+        with(binding ?: return) {
+            btnSelectRoom.visibility = View.VISIBLE
+        }
     }
 
     private inner class HotelCommonDataItem(
