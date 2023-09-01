@@ -9,7 +9,7 @@
     <color name="toast_background">@color/primary</color>
     <color name="progress_bar">@color/white</color>
     <color name="icon_update">@color/white</color>
-    <color name="star_layout_text">#FFA800</color>
-    <color name="star_layout">#33FFA800</color>
+    <color name="star_layout_text">#28B64F</color>
+    <color name="star_layout">#3328B64F</color>
     <color name="hotel_address_text_view">#0D72FF</color>
 </resources>

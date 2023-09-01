@@ -70,6 +70,11 @@ dependencies {
 
     //Glide
     implementation("com.github.bumptech.glide:glide:4.13.2")
+
+    // GroupieAdapter
+    val groupieVersion = "2.10.1"
+    implementation("com.github.lisawray.groupie:groupie:$groupieVersion")
+    implementation("com.github.lisawray.groupie:groupie-viewbinding:$groupieVersion")
 }
 
 kapt {

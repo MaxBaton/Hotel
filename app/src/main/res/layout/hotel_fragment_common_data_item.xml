@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/fragment_background">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/hotel_fragment_view_pager_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/star_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/star_layout"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        app:layout_constraintStart_toStartOf="@id/view_pager"
+        app:layout_constraintTop_toBottomOf="@id/view_pager"
+        android:orientation="horizontal"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_star"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/text_view_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="5"
+            android:textColor="@color/star_layout_text"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="3dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_rating_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Rating name"
+            android:textColor="@color/star_layout_text"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="5dp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/text_view_hotel_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/hotel_fragment_text_view_hotel_name_size"
+        android:textStyle="bold"
+        tools:text="Hotel name"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/star_linear_layout"
+        app:layout_constraintStart_toStartOf="@id/star_linear_layout"
+        />
+
+    <TextView
+        android:id="@+id/text_view_hotel_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/hotel_fragment_text_view_hotel_address_size"
+        tools:text="Hotel address"
+        android:textColor="@color/hotel_address_text_view"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_hotel_name"
+        app:layout_constraintStart_toStartOf="@id/star_linear_layout"
+        />
+
+    <TextView
+        android:id="@+id/text_view_min_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/hotel_fragment_text_view_hotel_min_price_size"
+        tools:text="от 132200"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        app:layout_constraintTop_toBottomOf="@id/text_view_hotel_address"
+        app:layout_constraintStart_toStartOf="@id/star_linear_layout"
+        />
+
+    <TextView
+        android:id="@+id/text_view_price_for_it"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/hotel_fragment_text_view_hotel_price_for_it_size"
+        tools:text="за тур с перелетом"
+        android:layout_marginStart="@dimen/hotel_fragment_margin_top_elements"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_view_min_price"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_min_price"
+        app:layout_constraintStart_toEndOf="@id/text_view_min_price"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

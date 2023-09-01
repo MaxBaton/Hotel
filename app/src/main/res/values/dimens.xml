@@ -8,4 +8,13 @@
     <dimen name="hotel_fragment_text_view_hotel_address_size">14sp</dimen>
     <dimen name="hotel_fragment_text_view_hotel_min_price_size">26sp</dimen>
     <dimen name="hotel_fragment_text_view_hotel_price_for_it_size">18sp</dimen>
+    <dimen name="hotel_fragment_view_pager_height">247dp</dimen>
+    <dimen name="hotel_fragment_about_hotel_text_size">18sp</dimen>
+    <dimen name="hotel_fragment_about_hotel_action_title_size">20sp</dimen>
+    <dimen name="hotel_fragment_about_hotel_action_subtitle_size">16sp</dimen>
+    <dimen name="hotel_fragment_about_hotel_action_icons_size">30dp</dimen>
+
+<!--    Common-->
+    <dimen name="round_button_text_size">14sp</dimen>
+    <dimen name="round_button_margins">20dp</dimen>
 </resources>

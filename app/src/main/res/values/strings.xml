@@ -3,6 +3,13 @@
 
 <!--    HotelFragment-->
     <string name="hotel_fragment_min_price">от %1$d</string>
+    <string name="hotel_fragment_select_room_button">К выбору номера</string>
+    <string name="hotel_fragment_about_hotel_title">Об отеле</string>
+<!--    Actions-->
+    <string name="hotel_fragment_action_subtitle">Самое необходимое</string>
+    <string name="hotel_fragment_action_conveniences_title">Удобства</string>
+    <string name="hotel_fragment_action_what_includes_title">Что включено</string>
+    <string name="hotel_fragment_action_what_not_includes_title">Что не включено</string>
 
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>
