@@ -48,6 +48,8 @@ class HotelFragment: Fragment() {
                         textViewRatingName.text = it.ratingName
                         textViewHotelName.text = it.name
                         textViewHotelAddress.text = it.address
+                        textViewMinPrice.text = getString(R.string.hotel_fragment_min_price, it.minimalPrice)
+                        textViewPriceForIt.text = it.priceForIt.lowercase()
                     }
                 }else {
                     requireContext().showShortToast(message = getString(R.string.toast_error_load_hotel_info))

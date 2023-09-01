@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Hotel</string>
 
+<!--    HotelFragment-->
+    <string name="hotel_fragment_min_price">от %1$d</string>
+
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>
     <string name="paid_fragment_message">Подтверждение заказа №%1$d может занять некоторое время (от 1 часа до суток).
