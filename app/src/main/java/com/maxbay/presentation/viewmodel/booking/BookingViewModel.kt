@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.maxbay.domain.booking.models.Booking
-import com.maxbay.domain.booking.models.Price
+import com.maxbay.domain.booking.models.BookingDataDomain
 import com.maxbay.domain.booking.usecases.GetBookingPrice
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,14 +16,10 @@ import javax.inject.Inject
 class BookingViewModel @Inject constructor(
     private val getBookingPrice: GetBookingPrice
 ): ViewModel() {
-    // Booking
-    private val bookingMutableLiveData = MutableLiveData<Booking?>()
-    val bookingLiveData: LiveData<Booking?>
+    // BookingData
+    private val bookingMutableLiveData = MutableLiveData<List<BookingDataDomain>?>()
+    val bookingLiveData: LiveData<List<BookingDataDomain>?>
         get() = bookingMutableLiveData
-    // Price
-    private val priceMutableLiveData = MutableLiveData<Price?>()
-    val priceLiveData: LiveData<Price?>
-        get() = priceMutableLiveData
 
     init {
         getBookingPrice()
@@ -33,13 +28,11 @@ class BookingViewModel @Inject constructor(
     private fun getBookingPrice() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val bookingPrice = getBookingPrice.get()
-                if (bookingPrice != null) {
-                    bookingMutableLiveData.postValue(bookingPrice.first)
-                    priceMutableLiveData.postValue(bookingPrice.second)
+                val listBookingData = getBookingPrice.get()
+                if (listBookingData != null) {
+                    bookingMutableLiveData.postValue(listBookingData)
                 }else {
                     bookingMutableLiveData.postValue(null)
-                    priceMutableLiveData.postValue(null)
                 }
             }
         }

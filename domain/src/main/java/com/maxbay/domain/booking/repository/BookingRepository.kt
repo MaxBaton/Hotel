@@ -1,8 +1,7 @@
 package com.maxbay.domain.booking.repository
 
-import com.maxbay.domain.booking.models.Booking
-import com.maxbay.domain.booking.models.Price
+import com.maxbay.domain.booking.models.BookingDataDomain
 
 interface BookingRepository {
-    suspend fun getBookingPrice(): Pair<Booking, Price>?
+    suspend fun getBookingPrice(): List<BookingDataDomain>?
 }

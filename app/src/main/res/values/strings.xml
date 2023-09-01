@@ -15,6 +15,20 @@
     <string name="rooms_fragment_price">%1$d \u20BD</string>
     <string name="rooms_details_title">Подробнее о номере</string>
 
+<!--    BookingFragment-->
+    <string name="booking_fragment_btn_pay_text">Оплатить</string>
+    <string name="booking_fragment_departure_title">Вылет из</string>
+    <string name="booking_fragment_arrival_country_title">Страна, город</string>
+    <string name="booking_fragment_arrival_tour_dates_title">Даты</string>
+    <string name="booking_fragment_arrival_number_of_nights_title">Даты</string>
+    <string name="booking_fragment_arrival_number_of_nights_data">%1$d ночей</string>
+    <string name="booking_fragment_arrival_hotel_title">Отель</string>
+    <string name="booking_fragment_arrival_room_title">Номер</string>
+    <string name="booking_fragment_arrival_nutrition_title">Питание</string>
+    <string name="booking_fragment_arrival_user_info_title">Информация о покупателе</string>
+    <string name="booking_fragment_arrival_user_phone_number_hint">Номер телефона</string>
+    <string name="booking_fragment_arrival_user_email_hint">Почта</string>
+
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>
     <string name="paid_fragment_message">Подтверждение заказа №%1$d может занять некоторое время (от 1 часа до суток).
@@ -29,4 +43,5 @@
 <!--    Action bar-->
     <string name="action_bar_title_hotel">Отель</string>
     <string name="action_bar_title_rooms">Номера</string>
+    <string name="action_bar_title_booking">Бронирование</string>
 </resources>
