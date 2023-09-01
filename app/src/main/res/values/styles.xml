@@ -7,9 +7,12 @@
     </style>
 
     <style name="Hotel_ActionBarTextView">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginStart">@dimen/action_bar_title_margin_start_end</item>
+        <item name="android:layout_marginEnd">@dimen/action_bar_title_margin_start_end</item>
     </style>
 
     <style name="Hotel_RoundButton">

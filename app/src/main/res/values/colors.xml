@@ -13,4 +13,5 @@
     <color name="star_layout">#33FFA800</color>
     <color name="hotel_address_text_view">#0D72FF</color>
     <color name="about_hotel_layout_background">#2DA8A8A8</color>
+    <color name="room_detail_background">#4D0D72FF</color>
 </resources>

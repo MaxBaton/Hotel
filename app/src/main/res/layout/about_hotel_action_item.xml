@@ -46,8 +46,8 @@
 
     <ImageView
         android:id="@+id/image_view_btn_action"
-        android:layout_width="@dimen/hotel_fragment_about_hotel_action_icons_size"
-        android:layout_height="@dimen/hotel_fragment_about_hotel_action_icons_size"
+        android:layout_width="@dimen/arrow_icon_size"
+        android:layout_height="@dimen/arrow_icon_size"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"

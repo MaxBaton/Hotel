@@ -11,6 +11,10 @@
     <string name="hotel_fragment_action_what_includes_title">Что включено</string>
     <string name="hotel_fragment_action_what_not_includes_title">Что не включено</string>
 
+<!--    RoomsFragment-->
+    <string name="rooms_fragment_price">%1$d \u20BD</string>
+    <string name="rooms_details_title">Подробнее о номере</string>
+
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>
     <string name="paid_fragment_message">Подтверждение заказа №%1$d может занять некоторое время (от 1 часа до суток).
@@ -24,4 +28,5 @@
 
 <!--    Action bar-->
     <string name="action_bar_title_hotel">Отель</string>
+    <string name="action_bar_title_rooms">Номера</string>
 </resources>

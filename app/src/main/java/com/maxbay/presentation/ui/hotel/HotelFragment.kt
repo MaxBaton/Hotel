@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -13,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.maxbay.domain.hotel.models.AboutTheHotelAction
 import com.maxbay.domain.hotel.models.Hotel
+import com.maxbay.domain.other.Constants
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.AboutHotelActionItemBinding
 import com.maxbay.hotel.databinding.FragmentHotelBinding
 import com.maxbay.hotel.databinding.HotelFragmentCommonDataItemBinding
 import com.maxbay.hotel.databinding.HotelFragmentDetailDataItemBinding
-import com.maxbay.hotel.databinding.HotelPhotoItemBinding
 import com.maxbay.hotel.databinding.PeculiarityItemBinding
+import com.maxbay.hotel.databinding.PhotoItemBinding
 import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.hotel.HotelViewModel
 import com.xwray.groupie.GroupieAdapter
@@ -35,6 +37,7 @@ class HotelFragment: Fragment() {
     private val actions by lazy {
         initializeActions()
     }
+    private var hotelName: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,13 +66,17 @@ class HotelFragment: Fragment() {
                             DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
                         )
                     }
+
+                    hotelName = hotelWithNull.name
                 }else {
                     requireContext().showShortToast(message = getString(R.string.toast_error_load_hotel_info))
                 }
             }
 
             btnSelectRoom.setOnClickListener {
-                findNavController().navigate(R.id.action_hotelFragment_to_roomsFragment)
+                val name = hotelName ?: Constants.Error.EMPTY_STRING
+                val bundle = bundleOf(Constants.Arguments.ARGUMENT_HOTEL_NAME to name)
+                findNavController().navigate(R.id.action_hotelFragment_to_roomsFragment, bundle)
             }
         }
     }
@@ -153,7 +160,7 @@ class HotelFragment: Fragment() {
             private val imageUrls: List<String>
         ): RecyclerView.Adapter<HotelPhotoAdapter.HotelPhotoViewHolder>() {
             private inner class HotelPhotoViewHolder(
-                private val hotelPhotoItemBinding: HotelPhotoItemBinding
+                private val hotelPhotoItemBinding: PhotoItemBinding
             ): RecyclerView.ViewHolder(hotelPhotoItemBinding.root) {
                 fun bind(imageUrl: String) {
                     Glide
@@ -166,7 +173,7 @@ class HotelFragment: Fragment() {
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelPhotoViewHolder {
                 return HotelPhotoViewHolder(
-                    hotelPhotoItemBinding = HotelPhotoItemBinding.inflate(layoutInflater, parent, false)
+                    hotelPhotoItemBinding = PhotoItemBinding.inflate(layoutInflater, parent, false)
                 )
             }
 
