@@ -22,14 +22,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/star_layout"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginTop="@dimen/hotel_fragment_common_data_star_layout_margin_top"
         app:layout_constraintStart_toStartOf="@id/view_pager"
         app:layout_constraintTop_toBottomOf="@id/view_pager"
         android:orientation="horizontal"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:paddingStart="7dp"
-        android:paddingEnd="7dp"
+        android:paddingTop="@dimen/hotel_fragment_common_data_star_layout_padding_top_bottom"
+        android:paddingBottom="@dimen/hotel_fragment_common_data_star_layout_padding_top_bottom"
+        android:paddingStart="@dimen/hotel_fragment_common_data_star_layout_padding_start_end"
+        android:paddingEnd="@dimen/hotel_fragment_common_data_star_layout_padding_start_end"
         android:visibility="invisible"
         tools:visibility="visible">
 
@@ -49,7 +49,7 @@
             tools:text="5"
             android:textColor="@color/star_layout_text"
             android:layout_gravity="center_vertical"
-            android:paddingStart="3dp"
+            android:paddingStart="@dimen/hotel_fragment_common_rating_padding_start"
             />
 
         <TextView
@@ -59,7 +59,7 @@
             tools:text="Rating name"
             android:textColor="@color/star_layout_text"
             android:layout_gravity="center_vertical"
-            android:paddingStart="5dp"
+            android:paddingStart="@dimen/hotel_fragment_common_rating_name_padding_start"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -70,11 +70,10 @@
         android:textSize="@dimen/hotel_fragment_text_view_hotel_name_size"
         android:textStyle="bold"
         tools:text="Hotel name"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/hotel_fragment_common_data_hotel_name_address_margin_top"
+        app:layout_constraintEnd_toEndOf="@id/view_pager"
         app:layout_constraintTop_toBottomOf="@id/star_linear_layout"
-        app:layout_constraintStart_toStartOf="@id/star_linear_layout"
+        app:layout_constraintStart_toStartOf="@id/view_pager"
         />
 
     <TextView
@@ -85,18 +84,17 @@
         tools:text="Hotel address"
         android:textColor="@color/hotel_address_text_view"
         android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/view_pager"
         app:layout_constraintTop_toBottomOf="@id/text_view_hotel_name"
-        app:layout_constraintStart_toStartOf="@id/star_linear_layout"
+        app:layout_constraintStart_toStartOf="@id/view_pager"
         />
 
     <TextView
         android:id="@+id/text_view_min_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/hotel_fragment_text_view_hotel_min_price_size"
-        tools:text="от 132200"
+        android:textSize="@dimen/hotel_fragment_common_data_min_price_text_size"
+        tools:text="от 132200 р"
         android:textStyle="bold"
         android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
         android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
@@ -108,11 +106,11 @@
         android:id="@+id/text_view_price_for_it"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/hotel_fragment_text_view_hotel_price_for_it_size"
+        android:textSize="@dimen/hotel_fragment_common_data_price_for_it_text_size"
         tools:text="за тур с перелетом"
-        android:layout_marginStart="@dimen/hotel_fragment_margin_top_elements"
+        android:textColor="@color/text_price_for_it"
+        android:layout_marginStart="@dimen/hotel_fragment_common_data_price_for_it_margin_start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/text_view_min_price"
         app:layout_constraintBottom_toBottomOf="@id/text_view_min_price"
         app:layout_constraintStart_toEndOf="@id/text_view_min_price"
         />

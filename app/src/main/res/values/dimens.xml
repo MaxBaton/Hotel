@@ -13,11 +13,24 @@
     <dimen name="hotel_fragment_about_hotel_action_title_size">20sp</dimen>
     <dimen name="hotel_fragment_about_hotel_action_subtitle_size">16sp</dimen>
     <dimen name="hotel_fragment_about_hotel_action_icons_size">30dp</dimen>
+<!--    Hotel fragment common data-->
+    <dimen name="hotel_fragment_common_data_star_layout_margin_top">15dp</dimen>
+    <dimen name="hotel_fragment_common_data_star_layout_padding_top_bottom">3dp</dimen>
+    <dimen name="hotel_fragment_common_data_star_layout_padding_start_end">7dp</dimen>
+    <dimen name="hotel_fragment_common_data_hotel_name_address_margin_top">8dp</dimen>
+    <dimen name="hotel_fragment_common_data_price_for_it_margin_start">4dp</dimen>
+    <dimen name="hotel_fragment_common_data_price_for_it_text_size">16sp</dimen>
+    <dimen name="hotel_fragment_common_data_min_price_text_size">30sp</dimen>
+    <dimen name="hotel_fragment_common_rating_name_padding_start">5dp</dimen>
+    <dimen name="hotel_fragment_common_rating_padding_start">3dp</dimen>
 
 <!--    Common-->
-    <dimen name="round_button_text_size">14sp</dimen>
+    <dimen name="round_button_text_size">16sp</dimen>
     <dimen name="round_button_margins">20dp</dimen>
+    <dimen name="round_button_corner_radius">15dp</dimen>
     <dimen name="arrow_icon_size">30dp</dimen>
     <dimen name="action_bar_title_size">18sp</dimen>
     <dimen name="action_bar_title_margin_start_end">5dp</dimen>
+<!--    Star icon-->
+    <dimen name="icon_star_sizes">15dp</dimen>
 </resources>

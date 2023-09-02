@@ -3,7 +3,7 @@
 
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="10dp"/>
+            <corners android:radius="@dimen/round_button_corner_radius"/>
             <solid android:color="@color/hotel_address_text_view"/>
         </shape>
     </item>
