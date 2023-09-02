@@ -28,6 +28,8 @@
         app:layout_constraintStart_toStartOf="@id/text_view_title"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/peculiarity_item"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
         />
 
     <TextView
@@ -36,11 +38,11 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/hotel_fragment_about_hotel_text_size"
         tools:text="Описание отеля..."
+        android:fontFamily="@font/sf_pro_display_thin"
         android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
         app:layout_constraintStart_toStartOf="@id/text_view_title"
         app:layout_constraintTop_toBottomOf="@id/recycler_view_peculiarities"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/recycler_view_actions"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -49,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
         android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
         app:layout_constraintTop_toBottomOf="@id/text_view_description"
         app:layout_constraintStart_toStartOf="@id/text_view_description"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -103,17 +103,17 @@ class HotelFragment: Fragment() {
     private fun initializeActions(): List<AboutTheHotelAction> {
         return listOf(
             AboutTheHotelAction(
-                icon = R.drawable.icon_star,
+                icon = R.drawable.icon_conveniences,
                 title = getString(R.string.hotel_fragment_action_conveniences_title),
                 subtitle = getString(R.string.hotel_fragment_action_subtitle)
             ),
             AboutTheHotelAction(
-                icon = R.drawable.icon_star,
+                icon = R.drawable.icon_what_include,
                 title = getString(R.string.hotel_fragment_action_what_includes_title),
                 subtitle = getString(R.string.hotel_fragment_action_subtitle)
             ),
             AboutTheHotelAction(
-                icon = R.drawable.icon_star,
+                icon = R.drawable.icon_what_not_include,
                 title = getString(R.string.hotel_fragment_action_what_not_includes_title),
                 subtitle = getString(R.string.hotel_fragment_action_subtitle)
             )

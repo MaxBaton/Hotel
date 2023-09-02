@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/hotel_fragment_common_data_price_for_it_text_size"
         tools:text="за тур с перелетом"
-        android:textColor="@color/text_price_for_it"
+        android:textColor="@color/text_subtitle"
         android:layout_marginStart="@dimen/hotel_fragment_common_data_price_for_it_margin_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/text_view_min_price"
