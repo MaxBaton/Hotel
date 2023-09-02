@@ -46,6 +46,7 @@
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>
     <string name="paid_fragment_message">Подтверждение заказа №%1$d может занять некоторое время (от 1 часа до суток).
         Как только мы получим ответ от туроператора, Вам на почту придет уведомление.</string>
+    <string name="paid_fragment_super_button">Супер</string>
 
 <!--    Toasts-->
     <string name="toast_error_load_hotel_info">Ошибка загрузки данных об отеле!</string>
@@ -57,4 +58,5 @@
     <string name="action_bar_title_hotel">Отель</string>
     <string name="action_bar_title_rooms">Номера</string>
     <string name="action_bar_title_booking">Бронирование</string>
+    <string name="action_bar_title_paid">Заказ оплачен</string>
 </resources>

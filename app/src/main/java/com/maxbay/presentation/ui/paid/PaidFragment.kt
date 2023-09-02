@@ -23,13 +23,14 @@ class PaidFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding ?: return) {
+            actionBar.textViewTitle.text = getString(R.string.action_bar_title_paid)
             textViewMessage.text = getString(R.string.paid_fragment_message, GetRandomOrderNumber.get())
 
-            btnBack.setOnClickListener {
+            actionBar.imageViewBack.setOnClickListener {
                 findNavController().popBackStack()
             }
 
-            btnFirstFragment.setOnClickListener {
+            btnSuper.setOnClickListener {
                 findNavController().popBackStack(destinationId = R.id.hotelFragment, inclusive = false)
             }
         }
