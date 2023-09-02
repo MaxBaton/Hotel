@@ -1,12 +1,8 @@
 package com.maxbay.data.booking.mappers
 
-import com.maxbay.data.booking.models.BookingData
 import com.maxbay.data.booking.models.BookingCommonData
 import com.maxbay.data.booking.models.BookingDatas
-import com.maxbay.data.booking.models.BookingPriceData
-import com.maxbay.domain.booking.models.Booking
 import com.maxbay.domain.booking.models.BookingDataDomain
-import com.maxbay.domain.booking.models.BookingPrice
 
 fun BookingCommonData.mapToBookingData(): BookingDatas.BookingData {
     return BookingDatas.BookingData(
@@ -58,8 +54,8 @@ fun List<BookingDatas>.mapToListBookingDataDomain(): List<BookingDataDomain> {
     return list.toList()
 }
 
-fun BookingDatas.BookingHotelData.mapToBookingHotel(): BookingDataDomain.BookingHotel {
-    return BookingDataDomain.BookingHotel(
+fun BookingDatas.BookingHotelData.mapToBookingHotel(): BookingDataDomain.Hotel {
+    return BookingDataDomain.Hotel(
         id = this.id,
         hotelName = this.hotel_name,
         hotelAddress = this.hotel_adress,

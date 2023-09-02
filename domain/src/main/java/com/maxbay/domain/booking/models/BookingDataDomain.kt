@@ -12,7 +12,7 @@ sealed class BookingDataDomain {
         val hotelName: String
     ): BookingDataDomain()
 
-    data class BookingHotel(
+    data class Hotel(
         val id: Int,
         val hotelName: String,
         val hotelAddress: String,

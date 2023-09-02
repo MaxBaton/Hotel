@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/fragment_background">
 
     <TextView
         android:id="@+id/text_view_user_info"
@@ -18,21 +19,46 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        android:id="@+id/txt_input_layout_phone_number"
+        style="@style/Hotel_TextInputLayout"
         app:layout_constraintStart_toStartOf="@id/text_view_user_info"
         app:layout_constraintTop_toBottomOf="@id/text_view_user_info"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-            android:hint="@string/booking_fragment_arrival_user_phone_number_hint"
-            android:inputType="text"/>
+            android:id="@+id/et_phone_number"
+            style="@style/Hotel_TextInputEditText"
+            android:hint="@string/booking_fragment_arrival_user_phone_number_hint" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_layout_email"
+        style="@style/Hotel_TextInputLayout"
+        app:layout_constraintStart_toStartOf="@id/text_view_user_info"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_phone_number"
+        app:layout_constraintEnd_toEndOf="@id/txt_input_layout_phone_number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            style="@style/Hotel_TextInputEditText"
+            android:hint="@string/booking_fragment_arrival_user_email_hint"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/text_view_additional_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/default_text_size"
+        android:text="@string/booking_fragment_arrival_user_additional_info"
+        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_input_layout_email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Hotel</string>
+    <string name="price_in_rubles">%1$d \u20BD</string>
 
 <!--    HotelFragment-->
     <string name="hotel_fragment_min_price">от %1$d \u20BD</string>
@@ -12,7 +13,6 @@
     <string name="hotel_fragment_action_what_not_includes_title">Что не включено</string>
 
 <!--    RoomsFragment-->
-    <string name="rooms_fragment_price">%1$d \u20BD</string>
     <string name="rooms_details_title">Подробнее о номере</string>
 
 <!--    BookingFragment-->
@@ -28,6 +28,19 @@
     <string name="booking_fragment_arrival_user_info_title">Информация о покупателе</string>
     <string name="booking_fragment_arrival_user_phone_number_hint">Номер телефона</string>
     <string name="booking_fragment_arrival_user_email_hint">Почта</string>
+    <string name="booking_fragment_arrival_user_additional_info">Эти данные никому не передаются.
+        После оплаты мы вышлим чек на указанные Вами адрес и почту.</string>
+    <string name="booking_fragment_price_tour_price_title">Тур</string>
+    <string name="booking_fragment_price_fuel_charge_title">Топливыный сбор</string>
+    <string name="booking_fragment_price_service_charge_title">Сервисный сбор</string>
+    <string name="booking_fragment_price_sum_charge_title">К оплате</string>
+<!--    Tourist-->
+    <string name="booking_fragment_tourist_firstname">Имя</string>
+    <string name="booking_fragment_tourist_surname">Фамилия</string>
+    <string name="booking_fragment_tourist_bithday">Дата рождения</string>
+    <string name="booking_fragment_tourist_citizenship">Гражданство</string>
+    <string name="booking_fragment_tourist_passport_number">Номер загранпаспорта</string>
+    <string name="booking_fragment_tourist_passport_validity">Срок действия загранпаспорта</string>
 
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>

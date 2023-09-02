@@ -70,7 +70,7 @@ class RoomsFragment: Fragment() {
             fun bind(room: Room) {
                 with(roomItemBinding) {
                     textViewRoomName.text = room.name
-                    textViewPrice.text = getString(R.string.rooms_fragment_price, room.price)
+                    textViewPrice.text = getString(R.string.price_in_rubles, room.price)
                     textViewPricePer.text = room.pricePer
                     recyclerViewRoomPeculiarities.adapter = RoomPeculiaritiesAdapter(peculiarities = room.peculiarities)
                     viewPagerPhotos.adapter = RoomPhotosAdapter(photos = room.imageUrls)
