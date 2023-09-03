@@ -7,7 +7,7 @@
 
     <color name="fragment_background">@color/white</color>
     <color name="fragment_background_2">#F6F6F9</color>
-    <color name="toast_background">@color/primary</color>
+    <color name="toast_background">@color/hotel_address_text_view</color>
     <color name="progress_bar">@color/hotel_address_text_view</color>
     <color name="icon_update">@color/black</color>
     <color name="star_layout_text">#FFA800</color>

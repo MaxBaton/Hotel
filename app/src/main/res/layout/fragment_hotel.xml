@@ -37,7 +37,9 @@
         app:layout_constraintEnd_toEndOf="@id/recycler_view"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical"
-        android:background="@color/fragment_background">
+        android:background="@color/fragment_background"
+        android:visibility="invisible"
+        tools:visibility="visible">
 
         <Button
             android:id="@+id/btn_select_room"
