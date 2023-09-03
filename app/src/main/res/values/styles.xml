@@ -52,4 +52,21 @@
         <item name="android:layout_gravity">center_horizontal|bottom</item>
         <item name="android:layout_marginBottom">@dimen/photo_page_indicator_margin_bottom</item>
     </style>
+
+    <style name="Hotel_TextViewPrice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/hotel_fragment_common_data_min_price_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/hotel_fragment_margin_top_elements</item>
+    </style>
+
+    <style name="Hotel_TextViewPriceDescription">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/hotel_fragment_common_data_price_for_it_text_size</item>
+        <item name="android:textColor">@color/text_subtitle</item>
+        <item name="android:layout_marginBottom">@dimen/hotel_fragment_common_data_price_for_it_margin_bottom</item>
+        <item name="android:layout_marginStart">@dimen/hotel_fragment_common_data_price_for_it_margin_start</item>
+    </style>
 </resources>

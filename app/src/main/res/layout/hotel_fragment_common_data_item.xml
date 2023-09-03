@@ -102,26 +102,16 @@
 
     <TextView
         android:id="@+id/text_view_min_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/hotel_fragment_common_data_min_price_text_size"
+        style="@style/Hotel_TextViewPrice"
         tools:text="от 132200 р"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
         app:layout_constraintTop_toBottomOf="@id/text_view_hotel_address"
         app:layout_constraintStart_toStartOf="@id/star_linear_layout"
         />
 
     <TextView
         android:id="@+id/text_view_price_for_it"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/hotel_fragment_common_data_price_for_it_text_size"
-        tools:text="за тур с перелетом"
-        android:textColor="@color/text_subtitle"
-        android:layout_marginBottom="@dimen/hotel_fragment_common_data_price_for_it_margin_bottom"
-        android:layout_marginStart="@dimen/hotel_fragment_common_data_price_for_it_margin_start"
+        style="@style/Hotel_TextViewPriceDescription"
+        tools:text="за xxx"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/text_view_min_price"
         app:layout_constraintStart_toEndOf="@id/text_view_min_price"

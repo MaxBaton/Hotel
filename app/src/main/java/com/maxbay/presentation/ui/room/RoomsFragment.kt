@@ -14,6 +14,7 @@ import com.maxbay.domain.other.Constants
 import com.maxbay.domain.room.models.Room
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentRoomsBinding
+import com.maxbay.hotel.databinding.PeculiarityItemBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
 import com.maxbay.hotel.databinding.RoomItemBinding
 import com.maxbay.hotel.databinding.RoomPeculiarityItemBinding
@@ -75,7 +76,7 @@ class RoomsFragment: Fragment() {
                 with(roomItemBinding) {
                     textViewRoomName.text = room.name
                     textViewPrice.text = getString(R.string.price_in_rubles, room.price)
-                    textViewPricePer.text = room.pricePer
+                    textViewPricePer.text = room.pricePer.lowercase()
                     recyclerViewRoomPeculiarities.adapter = RoomPeculiaritiesAdapter(peculiarities = room.peculiarities)
                     // Photos
                     val roomsPhotosAdapter = RoomPhotosAdapter(photos = room.imageUrls)
@@ -107,16 +108,16 @@ class RoomsFragment: Fragment() {
             private val peculiarities: List<String>
         ): RecyclerView.Adapter<RoomPeculiaritiesAdapter.RoomPeculiaritiesViewHolder>() {
             private inner class RoomPeculiaritiesViewHolder(
-                private val roomPeculiarityItemBinding: RoomPeculiarityItemBinding
-            ): RecyclerView.ViewHolder(roomPeculiarityItemBinding.root) {
+                private val peculiarityItemBinding: PeculiarityItemBinding
+            ): RecyclerView.ViewHolder(peculiarityItemBinding.root) {
                 fun bind(peculiarity: String) {
-                    roomPeculiarityItemBinding.textViewPeculiarity.text = peculiarity
+                    peculiarityItemBinding.textViewPeculiarity.text = peculiarity
                 }
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomPeculiaritiesViewHolder {
                 return RoomPeculiaritiesViewHolder(
-                    roomPeculiarityItemBinding = RoomPeculiarityItemBinding.inflate(layoutInflater, parent, false)
+                    peculiarityItemBinding = PeculiarityItemBinding.inflate(layoutInflater, parent, false)
                 )
             }
 

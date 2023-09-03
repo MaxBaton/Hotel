@@ -9,6 +9,7 @@
     <FrameLayout
         android:id="@+id/photos_layout"
         style="@style/Hotel_FrameLayoutPhotos"
+        android:layout_marginTop="@dimen/hotel_fragment_margin_start_end_elements"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -61,8 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="@color/room_detail_background"
+        android:padding="@dimen/hotel_fragment_detail_room_details_padding"
+        android:background="@color/room_details_background"
         android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
         app:layout_constraintTop_toBottomOf="@id/recycler_view_room_peculiarities"
         app:layout_constraintStart_toStartOf="@id/recycler_view_room_peculiarities">
@@ -76,9 +77,9 @@
             />
 
         <ImageView
-            android:layout_width="@dimen/arrow_icon_size"
-            android:layout_height="@dimen/arrow_icon_size"
-            android:src="@drawable/icon_star"
+            android:layout_width="@dimen/icon_arrow_right_room_details_width"
+            android:layout_height="@dimen/icon_arrow_right_room_details_height"
+            android:src="@drawable/icon_arrow_right_room_details"
             android:layout_gravity="center"
             />
 
@@ -86,24 +87,16 @@
 
     <TextView
         android:id="@+id/text_view_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/hotel_fragment_text_view_hotel_min_price_size"
+        style="@style/Hotel_TextViewPrice"
         tools:text="132200 р"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
         app:layout_constraintTop_toBottomOf="@id/room_details_layout"
         app:layout_constraintStart_toStartOf="@id/room_details_layout"
         />
 
     <TextView
         android:id="@+id/text_view_price_per"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/hotel_fragment_text_view_hotel_price_for_it_size"
+        style="@style/Hotel_TextViewPriceDescription"
         tools:text="price per"
-        android:layout_marginStart="@dimen/hotel_fragment_margin_top_elements"
-        app:layout_constraintTop_toTopOf="@id/text_view_price"
         app:layout_constraintBottom_toBottomOf="@id/text_view_price"
         app:layout_constraintStart_toEndOf="@id/text_view_price"
         />

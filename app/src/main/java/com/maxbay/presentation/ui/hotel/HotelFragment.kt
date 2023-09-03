@@ -203,22 +203,12 @@ class HotelFragment: Fragment() {
                 hotel.let {
                     textViewDescription.text = it.aboutTheHotel.description
                     // Peculiarities
-                    val peculiarities = it.aboutTheHotel.peculiarities
-                    val gridSpanCount = ceil(sqrt(peculiarities.size.toDouble())).toInt()
-                    val myLayoutManager = object: GridLayoutManager(requireContext(), gridSpanCount) {
-                        override fun canScrollVertically() = false
-                        override fun canScrollHorizontally() = false
-                    }
                     recyclerViewPeculiarities.adapter = PeculiaritiesAdapter(
                         peculiarities = it.aboutTheHotel.peculiarities
                     )
-                    recyclerViewPeculiarities.layoutManager = myLayoutManager
                     // Actions
                     recyclerViewActions.let {
                         it.adapter = AboutHotelActionsAdapter(actions = actions)
-//                        it.addItemDecoration(
-//                            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
-//                        )
                     }
                 }
             }

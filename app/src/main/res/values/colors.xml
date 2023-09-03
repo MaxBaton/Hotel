@@ -19,4 +19,5 @@
     <color name="text_subtitle">#828796</color>
     <color name="peculiarity_item_background_color">#FBFBFC</color>
     <color name="about_hotel_text">#E6000000</color>
+    <color name="room_details_background">#1A0D72FF</color>
 </resources>
