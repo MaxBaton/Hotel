@@ -36,4 +36,20 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:inputType">text</item>
     </style>
+
+    <style name="Hotel_FrameLayoutPhotos">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/hotel_fragment_view_pager_height</item>
+        <item name="android:layout_marginStart">@dimen/hotel_fragment_margin_start_end_elements</item>
+        <item name="android:layout_marginEnd">@dimen/hotel_fragment_margin_start_end_elements</item>
+    </style>
+
+    <style name="Hotel_PageIndicatorPhotos">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/photo_page_indicator_padding</item>
+        <item name="android:background">@drawable/page_indicator_backgroud</item>
+        <item name="android:layout_gravity">center_horizontal|bottom</item>
+        <item name="android:layout_marginBottom">@dimen/photo_page_indicator_margin_bottom</item>
+    </style>
 </resources>

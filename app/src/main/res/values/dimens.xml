@@ -39,6 +39,7 @@
     <dimen name="arrow_icon_size">30dp</dimen>
     <dimen name="action_bar_title_size">18sp</dimen>
     <dimen name="action_bar_title_margin_start_end">5dp</dimen>
+    <dimen name="icon_arrow_back_sizes">44dp</dimen>
 <!--    Star icon-->
     <dimen name="icon_star_sizes">15dp</dimen>
 <!--    Round in page indicator-->

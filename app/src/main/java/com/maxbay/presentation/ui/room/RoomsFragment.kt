@@ -17,6 +17,7 @@ import com.maxbay.hotel.databinding.FragmentRoomsBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
 import com.maxbay.hotel.databinding.RoomItemBinding
 import com.maxbay.hotel.databinding.RoomPeculiarityItemBinding
+import com.maxbay.presentation.ui.common.MyDividerItemDecoration
 import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.room.RoomViewModel
 
@@ -42,7 +43,10 @@ class RoomsFragment: Fragment() {
                     recyclerViewRooms.let {
                         it.adapter = RoomsAdapter(rooms = rooms)
                         it.addItemDecoration(
-                            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+                            MyDividerItemDecoration(
+                                context = requireContext(),
+                                orientation = DividerItemDecoration.VERTICAL
+                            )
                         )
                     }
                 }else {
@@ -73,7 +77,11 @@ class RoomsFragment: Fragment() {
                     textViewPrice.text = getString(R.string.price_in_rubles, room.price)
                     textViewPricePer.text = room.pricePer
                     recyclerViewRoomPeculiarities.adapter = RoomPeculiaritiesAdapter(peculiarities = room.peculiarities)
-                    viewPagerPhotos.adapter = RoomPhotosAdapter(photos = room.imageUrls)
+                    // Photos
+                    val roomsPhotosAdapter = RoomPhotosAdapter(photos = room.imageUrls)
+                    viewPagerPhotos.adapter = roomsPhotosAdapter
+                    viewPagerIndicator.setViewPager(viewPagerPhotos)
+                    roomsPhotosAdapter.registerAdapterDataObserver(viewPagerIndicator.adapterDataObserver)
 
                     btnSelectRoom.setOnClickListener {
                         findNavController().navigate(R.id.action_roomsFragment_to_bookingFragment)
