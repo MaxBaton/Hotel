@@ -19,6 +19,7 @@
     <dimen name="hotel_fragment_common_data_star_layout_padding_start_end">7dp</dimen>
     <dimen name="hotel_fragment_common_data_hotel_name_address_margin_top">8dp</dimen>
     <dimen name="hotel_fragment_common_data_price_for_it_margin_start">4dp</dimen>
+    <dimen name="hotel_fragment_common_data_price_for_it_margin_bottom">4dp</dimen>
     <dimen name="hotel_fragment_common_data_price_for_it_text_size">16sp</dimen>
     <dimen name="hotel_fragment_common_data_min_price_text_size">30sp</dimen>
     <dimen name="hotel_fragment_common_rating_name_padding_start">5dp</dimen>
@@ -27,6 +28,7 @@
     <dimen name="hotel_fragment_detail_peculiarity_item_text_size">16sp</dimen>
     <dimen name="hotel_fragment_detail_about_the_hotel_title_size">16sp</dimen>
     <dimen name="hotel_fragment_detail_about_the_hotel_subtitle_size">14sp</dimen>
+    <dimen name="hotel_fragment_detail_about_the_hotel_item_margin_top_bottom">15dp</dimen>
 
 <!--    Common-->
     <dimen name="round_button_text_size">16sp</dimen>
@@ -37,4 +39,12 @@
     <dimen name="action_bar_title_margin_start_end">5dp</dimen>
 <!--    Star icon-->
     <dimen name="icon_star_sizes">15dp</dimen>
+<!--    Round in page indicator-->
+    <dimen name="icon_radius_page_indicator_sizes">7dp</dimen>
+<!--    Photos-->
+    <dimen name="photo_card_view_corner_radius">20dp</dimen>
+    <dimen name="photo_page_indicator_padding">5dp</dimen>
+    <dimen name="photo_page_indicator_margin_bottom">8dp</dimen>
+<!--    Divider line-->
+    <dimen name="divider_line_height">5dp</dimen>
 </resources>

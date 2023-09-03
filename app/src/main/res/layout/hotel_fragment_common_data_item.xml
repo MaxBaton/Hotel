@@ -4,18 +4,38 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/fragment_background">
+    android:background="@drawable/round_corners_fragment_item">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <FrameLayout
+        android:id="@+id/photos_layout"
         android:layout_width="0dp"
         android:layout_height="@dimen/hotel_fragment_view_pager_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
-        />
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/view_pager_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/photo_page_indicator_padding"
+            android:background="@drawable/page_indicator_backgroud"
+            app:ci_drawable="@drawable/icon_radius_black"
+            app:ci_drawable_unselected="@drawable/icon_radius_gray"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="@dimen/photo_page_indicator_margin_bottom"
+            app:ci_animator="@anim/page_indicators"
+            />
+
+    </FrameLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/star_linear_layout"
@@ -23,8 +43,8 @@
         android:layout_height="wrap_content"
         android:background="@color/star_layout"
         android:layout_marginTop="@dimen/hotel_fragment_common_data_star_layout_margin_top"
-        app:layout_constraintStart_toStartOf="@id/view_pager"
-        app:layout_constraintTop_toBottomOf="@id/view_pager"
+        app:layout_constraintStart_toStartOf="@id/photos_layout"
+        app:layout_constraintTop_toBottomOf="@id/photos_layout"
         android:orientation="horizontal"
         android:paddingTop="@dimen/hotel_fragment_common_data_star_layout_padding_top_bottom"
         android:paddingBottom="@dimen/hotel_fragment_common_data_star_layout_padding_top_bottom"
@@ -71,9 +91,9 @@
         android:textStyle="bold"
         tools:text="Hotel name"
         android:layout_marginTop="@dimen/hotel_fragment_common_data_hotel_name_address_margin_top"
-        app:layout_constraintEnd_toEndOf="@id/view_pager"
+        app:layout_constraintEnd_toEndOf="@id/photos_layout"
         app:layout_constraintTop_toBottomOf="@id/star_linear_layout"
-        app:layout_constraintStart_toStartOf="@id/view_pager"
+        app:layout_constraintStart_toStartOf="@id/photos_layout"
         />
 
     <TextView
@@ -84,9 +104,9 @@
         tools:text="Hotel address"
         android:textColor="@color/hotel_address_text_view"
         android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
-        app:layout_constraintEnd_toEndOf="@id/view_pager"
+        app:layout_constraintEnd_toEndOf="@id/photos_layout"
         app:layout_constraintTop_toBottomOf="@id/text_view_hotel_name"
-        app:layout_constraintStart_toStartOf="@id/view_pager"
+        app:layout_constraintStart_toStartOf="@id/photos_layout"
         />
 
     <TextView
@@ -109,6 +129,7 @@
         android:textSize="@dimen/hotel_fragment_common_data_price_for_it_text_size"
         tools:text="за тур с перелетом"
         android:textColor="@color/text_subtitle"
+        android:layout_marginBottom="@dimen/hotel_fragment_common_data_price_for_it_margin_bottom"
         android:layout_marginStart="@dimen/hotel_fragment_common_data_price_for_it_margin_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/text_view_min_price"

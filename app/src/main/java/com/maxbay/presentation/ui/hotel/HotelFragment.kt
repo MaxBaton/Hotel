@@ -22,6 +22,7 @@ import com.maxbay.hotel.databinding.HotelFragmentCommonDataItemBinding
 import com.maxbay.hotel.databinding.HotelFragmentDetailDataItemBinding
 import com.maxbay.hotel.databinding.PeculiarityItemBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
+import com.maxbay.presentation.ui.common.MyDividerItemDecoration
 import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.hotel.HotelViewModel
 import com.xwray.groupie.GroupieAdapter
@@ -63,7 +64,10 @@ class HotelFragment: Fragment() {
                     recyclerView.let {
                         it.adapter = groupieAdapter
                         it.addItemDecoration(
-                            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+                            MyDividerItemDecoration(
+                                context = requireContext(),
+                                orientation = DividerItemDecoration.VERTICAL
+                            )
                         )
                     }
 
@@ -137,6 +141,8 @@ class HotelFragment: Fragment() {
                     // Photos
                     val hotelPhotoAdapter = HotelPhotoAdapter(imageUrls = it.imageUrls)
                     viewPager.adapter = hotelPhotoAdapter
+                    viewPagerIndicator.setViewPager(viewPager)
+                    hotelPhotoAdapter.registerAdapterDataObserver(viewPagerIndicator.adapterDataObserver)
                     // Rating
                     textViewRating.text = it.rating.toString()
                     textViewRatingName.text = it.ratingName
@@ -208,7 +214,12 @@ class HotelFragment: Fragment() {
                     )
                     recyclerViewPeculiarities.layoutManager = myLayoutManager
                     // Actions
-                    recyclerViewActions.adapter = AboutHotelActionsAdapter(actions = actions)
+                    recyclerViewActions.let {
+                        it.adapter = AboutHotelActionsAdapter(actions = actions)
+//                        it.addItemDecoration(
+//                            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+//                        )
+                    }
                 }
             }
         }

@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/image_view_action"
         android:layout_marginStart="@dimen/hotel_fragment_margin_top_elements"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginTop="@dimen/hotel_fragment_detail_about_the_hotel_item_margin_top_bottom"
         />
 
     <TextView
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_view_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/text_view_title"
-        android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginBottom="@dimen/hotel_fragment_detail_about_the_hotel_item_margin_top_bottom"
         />
 
     <ImageView
@@ -51,12 +51,10 @@
         android:layout_height="@dimen/hotel_fragment_about_hotel_action_icons_size"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_top_elements"
         android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
-        android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_view_title"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_subtitle"
         android:src="@drawable/icon_arrow_right_about_the_hotel"
         />
 

@@ -75,6 +75,9 @@ dependencies {
     val groupieVersion = "2.10.1"
     implementation("com.github.lisawray.groupie:groupie:$groupieVersion")
     implementation("com.github.lisawray.groupie:groupie-viewbinding:$groupieVersion")
+
+//    Page indicator for viewPager
+    implementation("me.relex:circleindicator:2.1.6")
 }
 
 kapt {
