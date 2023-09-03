@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/peculiarity_item_background_color">
+    android:background="@color/peculiarity_item_background_color"
+    android:id="@+id/text_view_peculiarity"
+    tools:text="Преимущество"
+    android:textSize="@dimen/hotel_fragment_detail_peculiarity_item_text_size"
+    android:textColor="@color/text_subtitle"
+    android:paddingStart="@dimen/hotel_fragment_detail_peculiarity_item_padding_start_end"
+    android:paddingEnd="@dimen/hotel_fragment_detail_peculiarity_item_padding_start_end"
+    android:paddingTop="@dimen/hotel_fragment_detail_peculiarity_item_padding_top_bottom"
+    android:paddingBottom="@dimen/hotel_fragment_detail_peculiarity_item_padding_top_bottom"
+    >
 
-    <TextView
-        android:layout_marginTop="5dp"
-        android:id="@+id/text_view_peculiarity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Преимущество"
-        android:textSize="@dimen/hotel_fragment_detail_peculiarity_item_text_size"
-        android:textColor="@color/text_subtitle"
-        />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</TextView>

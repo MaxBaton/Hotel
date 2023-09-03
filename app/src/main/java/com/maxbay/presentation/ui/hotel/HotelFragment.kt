@@ -126,7 +126,7 @@ class HotelFragment: Fragment() {
 
     private fun showAllViews() {
         with(binding ?: return) {
-            btnSelectRoom.visibility = View.VISIBLE
+            bottomLayout.visibility = View.VISIBLE
         }
     }
 
