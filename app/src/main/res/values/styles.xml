@@ -78,4 +78,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">textStart</item>
     </style>
+
+    <style name="Hotel_GuidelineVerticalBookingDataItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="layout_constraintGuide_percent">0.4</item>
+    </style>
 </resources>

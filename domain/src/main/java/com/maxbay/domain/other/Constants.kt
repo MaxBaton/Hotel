@@ -16,6 +16,7 @@ object Constants {
     }
 
     object Phone {
+        const val TEMPLATE = "+7 (***) ***-**-**"
         const val KEY_SYMBOL = "*"
     }
 }

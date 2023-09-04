@@ -42,7 +42,6 @@
     <string name="booking_fragment_tourist_passport_number">Номер загранпаспорта</string>
     <string name="booking_fragment_tourist_passport_validity">Срок действия загранпаспорта</string>
 <!--    User info-->
-    <string name="booking_fragment_user_info_phone_template">+7 (***) ***-**-**</string>
 
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>
