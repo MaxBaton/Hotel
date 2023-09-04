@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -303,9 +304,12 @@ class BookingFragment: Fragment() {
                 })
 
                 etEmail.setOnFocusChangeListener { v, hasFocus ->
-                    if (!hasFocus && !IsValidEmail.isValid(email = etEmail.text.toString().trim())) {
-                        requireContext().showShortToast(message = "incorrect email")
+                    val color = if (!hasFocus && !IsValidEmail.isValid(email = etEmail.text.toString().trim())) {
+                        ContextCompat.getColor(requireContext(), R.color.error_item)
+                    }else {
+                        ContextCompat.getColor(requireContext(), R.color.black)
                     }
+                    etEmail.setTextColor(color)
                 }
             }
         }

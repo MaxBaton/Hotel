@@ -35,7 +35,8 @@
             style="@style/Hotel_TextInputEditText"
             android:hint="@string/booking_fragment_arrival_user_phone_number_hint"
             android:inputType="numberDecimal"
-            android:digits="0123456789"/>
+            android:digits="0123456789"
+            android:cursorVisible="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -45,12 +46,15 @@
         app:layout_constraintStart_toStartOf="@id/text_view_user_info"
         app:layout_constraintTop_toBottomOf="@id/txt_input_layout_phone_number"
         app:layout_constraintEnd_toEndOf="@id/txt_input_layout_phone_number"
-        app:endIconMode="clear_text">
+        app:endIconMode="clear_text"
+        android:colorControlActivated="@color/cursor_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
             style="@style/Hotel_TextInputEditText"
-            android:hint="@string/booking_fragment_arrival_user_email_hint"/>
+            android:hint="@string/booking_fragment_arrival_user_email_hint"
+            android:textCursorDrawable="@drawable/cursor_et_drawable"
+            android:cursorVisible="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 

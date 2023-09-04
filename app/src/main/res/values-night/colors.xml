@@ -17,4 +17,6 @@
     <color name="text_subtitle">#828796</color>
     <color name="peculiarity_item_background_color">#FBFBFC</color>
     <color name="about_hotel_text">#E6000000</color>
+    <color name="error_item">#26EB5757</color>
+    <color name="cursor_color">@color/white</color>
 </resources>
