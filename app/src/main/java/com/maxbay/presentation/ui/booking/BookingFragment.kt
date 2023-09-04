@@ -1,6 +1,8 @@
 package com.maxbay.presentation.ui.booking
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -229,19 +231,25 @@ class BookingFragment: Fragment() {
         override fun bind(viewBinding: UserInfoItemBinding, position: Int) {
             with(viewBinding) {
                 etPhoneNumber.setOnFocusChangeListener { v, hasFocus ->
-                    if (hasFocus) {
-                        etPhoneNumber.setText(getString(R.string.booking_fragment_user_info_phone_template), TextView.BufferType.EDITABLE)
+                    if (hasFocus && etPhoneNumber.text.toString().trim().isEmpty()) {
+                        val templateStr = getString(R.string.booking_fragment_user_info_phone_template)
+                        etPhoneNumber.setText(templateStr, TextView.BufferType.EDITABLE)
+                        etPhoneNumber.setSelection(templateStr.length)
                     }
                 }
 
                 etPhoneNumber.addTextChangedListener(object: TextWatcher {
                     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                        currPhoneStr = s?.toString() ?: Constants.Error.EMPTY_STRING
+                        val a = 2
+                        val c = a
                     }
 
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                         val currInputStr = s?.toString() ?: Constants.Error.EMPTY_STRING
-                        if (currPhoneStr != currInputStr && currInputStr != getString(R.string.booking_fragment_user_info_phone_template)) {
+                        if (currPhoneStr != currInputStr
+                                && currInputStr != getString(R.string.booking_fragment_user_info_phone_template)
+                                && currInputStr.isNotBlank()
+                            ) {
                             try {
                                 val inputNumberStr = currInputStr[currInputStr.length - 1].toString()
                                 val newStr = GetNewPhoneStrAfterInput.get(
@@ -259,8 +267,13 @@ class BookingFragment: Fragment() {
                     }
 
                     override fun afterTextChanged(s: Editable?) {
-                        val a= s?.toString()
-                        val txt = "a"
+                        s?.toString()?.let { str ->
+                            try {
+                                etPhoneNumber.setSelection(str.length)
+                            }catch (e: IndexOutOfBoundsException) {
+                                Log.d(Constants.Logs.OTHER_ERROR, e.message.toString())
+                            }
+                        }
                     }
                 })
 
