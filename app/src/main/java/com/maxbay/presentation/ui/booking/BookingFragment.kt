@@ -1,15 +1,25 @@
 package com.maxbay.presentation.ui.booking
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.maxbay.domain.booking.models.BookingDataDomain
+import com.maxbay.domain.booking.usecases.email.IsValidEmail
+import com.maxbay.domain.booking.usecases.phone.GetFirstPhoneKeySymbolIndex
+import com.maxbay.domain.booking.usecases.phone.GetLastInputNumberFromCharSequence
+import com.maxbay.domain.booking.usecases.phone.GetNewPhoneStrAfterInput
+import com.maxbay.domain.other.Constants
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.BookingDataItemBinding
 import com.maxbay.hotel.databinding.BookingHotelItemBinding
@@ -21,11 +31,14 @@ import com.maxbay.hotel.databinding.TouristDataItemBinding
 import com.maxbay.hotel.databinding.TouristHeaderItemBinding
 import com.maxbay.hotel.databinding.TouristItemBinding
 import com.maxbay.hotel.databinding.UserInfoItemBinding
+import com.maxbay.presentation.ui.common.MyDividerItemDecoration
 import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.booking.BookingViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
+import java.lang.StringBuilder
 
 class BookingFragment: Fragment() {
     private var binding: FragmentBookingBinding? = null
@@ -41,7 +54,15 @@ class BookingFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding ?: return) {
             actionBar.textViewTitle.text = getString(R.string.action_bar_title_booking)
-            recyclerViewBookingPrice.adapter = groupieAdapter
+            recyclerViewBookingPrice.let {
+                it.adapter = groupieAdapter
+                it.addItemDecoration(
+                    MyDividerItemDecoration(
+                        context = requireContext(),
+                        orientation = DividerItemDecoration.VERTICAL
+                    )
+                )
+            }
 
             bookingViewModel.bookingLiveData.observe(viewLifecycleOwner) { bookingListData ->
                 progressBar.visibility = View.GONE
@@ -60,6 +81,14 @@ class BookingFragment: Fragment() {
 
             btnPay.setOnClickListener {
                 findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
+            }
+
+            KeyboardVisibilityEvent.setEventListener(requireActivity(), viewLifecycleOwner) { isOpen ->
+                if (isOpen) {
+                    btnPay.visibility = View.GONE
+                }else {
+                    btnPay.visibility = View.VISIBLE
+                }
             }
         }
     }
@@ -195,9 +224,51 @@ class BookingFragment: Fragment() {
     }
 
     private inner class UserInfoItem(): BindableItem<UserInfoItemBinding>() {
+        private var currPhoneStr: String = Constants.Error.EMPTY_STRING
+
         override fun bind(viewBinding: UserInfoItemBinding, position: Int) {
             with(viewBinding) {
+                etPhoneNumber.setOnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        etPhoneNumber.setText(getString(R.string.booking_fragment_user_info_phone_template), TextView.BufferType.EDITABLE)
+                    }
+                }
 
+                etPhoneNumber.addTextChangedListener(object: TextWatcher {
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                        currPhoneStr = s?.toString() ?: Constants.Error.EMPTY_STRING
+                    }
+
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                        val currInputStr = s?.toString() ?: Constants.Error.EMPTY_STRING
+                        if (currPhoneStr != currInputStr && currInputStr != getString(R.string.booking_fragment_user_info_phone_template)) {
+                            try {
+                                val inputNumberStr = currInputStr[currInputStr.length - 1].toString()
+                                val newStr = GetNewPhoneStrAfterInput.get(
+                                    currStr = currInputStr,
+                                    inputNumberStr = inputNumberStr
+                                )
+                                if (newStr != Constants.Error.EMPTY_STRING) {
+                                    currPhoneStr = newStr
+                                    etPhoneNumber.setText(newStr, TextView.BufferType.EDITABLE)
+                                }
+                            }catch (e: Exception) {
+                                Log.d(Constants.Logs.OTHER_ERROR, e.message.toString())
+                            }
+                        }
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        val a= s?.toString()
+                        val txt = "a"
+                    }
+                })
+
+                etEmail.setOnFocusChangeListener { v, hasFocus ->
+                    if (!hasFocus && !IsValidEmail.isValid(email = etEmail.text.toString().trim())) {
+                        requireContext().showShortToast(message = "incorrect email")
+                    }
+                }
             }
         }
 

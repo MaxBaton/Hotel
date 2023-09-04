@@ -76,8 +76,11 @@ dependencies {
     implementation("com.github.lisawray.groupie:groupie:$groupieVersion")
     implementation("com.github.lisawray.groupie:groupie-viewbinding:$groupieVersion")
 
-//    Page indicator for viewPager
+    // Page indicator for viewPager
     implementation("me.relex:circleindicator:2.1.6")
+
+    // Keyboard
+    implementation("net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3")
 }
 
 kapt {

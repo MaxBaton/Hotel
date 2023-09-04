@@ -20,7 +20,7 @@
     <string name="booking_fragment_departure_title">Вылет из</string>
     <string name="booking_fragment_arrival_country_title">Страна, город</string>
     <string name="booking_fragment_arrival_tour_dates_title">Даты</string>
-    <string name="booking_fragment_arrival_number_of_nights_title">Даты</string>
+    <string name="booking_fragment_arrival_number_of_nights_title">Кол-во ночей</string>
     <string name="booking_fragment_arrival_number_of_nights_data">%1$d ночей</string>
     <string name="booking_fragment_arrival_hotel_title">Отель</string>
     <string name="booking_fragment_arrival_room_title">Номер</string>
@@ -41,6 +41,8 @@
     <string name="booking_fragment_tourist_citizenship">Гражданство</string>
     <string name="booking_fragment_tourist_passport_number">Номер загранпаспорта</string>
     <string name="booking_fragment_tourist_passport_validity">Срок действия загранпаспорта</string>
+<!--    User info-->
+    <string name="booking_fragment_user_info_phone_template">+7 (***) ***-**-**</string>
 
 <!--    PaidFragment-->
     <string name="paid_fragment_title">Ваш заказ принят в работу</string>

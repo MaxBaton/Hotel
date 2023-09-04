@@ -33,6 +33,9 @@
     <dimen name="hotel_fragment_detail_peculiarity_item_padding_start_end">10dp</dimen>
     <dimen name="hotel_fragment_detail_room_details_padding">5dp</dimen>
 
+<!--    BookingFragment-->
+    <dimen name="booking_fragment_data_item_padding_top_bottom">10dp</dimen>
+
 <!--    Common-->
     <dimen name="round_button_text_size">16sp</dimen>
     <dimen name="round_button_margins">20dp</dimen>

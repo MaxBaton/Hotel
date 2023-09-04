@@ -8,9 +8,14 @@ object Constants {
 
     object Error {
         const val EMPTY_STRING = ""
+        const val ERROR_INT = -1
     }
 
     object Arguments {
         const val ARGUMENT_HOTEL_NAME = "ARGUMENT_HOTEL_NAME"
+    }
+
+    object Phone {
+        const val KEY_SYMBOL = "*"
     }
 }
