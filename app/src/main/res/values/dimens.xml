@@ -35,6 +35,14 @@
 
 <!--    BookingFragment-->
     <dimen name="booking_fragment_data_item_padding_top_bottom">10dp</dimen>
+    <dimen name="booking_fragment_tourist_header_up_down_icon_sizes">32dp</dimen>
+
+<!--    PaidFragment-->
+    <dimen name="paid_fragment_icon_successful_pay_sizes">44dp</dimen>
+    <dimen name="paid_fragment_frame_successful_pay_sizes">94dp</dimen>
+    <dimen name="paid_fragment_text_title">22sp</dimen>
+    <dimen name="paid_fragment_text_subtitle">16sp</dimen>
+    <dimen name="paid_fragment_margin_top_bottom">20dp</dimen>
 
 <!--    Common-->
     <dimen name="round_button_text_size">16sp</dimen>

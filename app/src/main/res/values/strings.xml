@@ -41,6 +41,7 @@
     <string name="booking_fragment_tourist_citizenship">Гражданство</string>
     <string name="booking_fragment_tourist_passport_number">Номер загранпаспорта</string>
     <string name="booking_fragment_tourist_passport_validity">Срок действия загранпаспорта</string>
+    <string name="booking_fragment_tourist_add_new">Добавить туриста</string>
 <!--    User info-->
 
 <!--    PaidFragment-->

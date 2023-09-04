@@ -28,6 +28,7 @@ import com.maxbay.hotel.databinding.FragmentBookingBinding
 import com.maxbay.hotel.databinding.PriceDataItemBinding
 import com.maxbay.hotel.databinding.PriceItemBinding
 import com.maxbay.hotel.databinding.TouristDataItemBinding
+import com.maxbay.hotel.databinding.TouristFooterItemBinding
 import com.maxbay.hotel.databinding.TouristHeaderItemBinding
 import com.maxbay.hotel.databinding.TouristItemBinding
 import com.maxbay.hotel.databinding.UserInfoItemBinding
@@ -328,6 +329,7 @@ class BookingFragment: Fragment() {
                 section.let {
                     it.setHideWhenEmpty(true)
                     it.setHeader(TouristHeader(touristNumber = 1))
+                    it.setFooter(TouristFooter())
                     it.add(TouristDataItem())
                 }
                 groupieAdapter.add(section)
@@ -369,6 +371,20 @@ class BookingFragment: Fragment() {
             override fun getLayout() = R.layout.tourist_data_item
 
             override fun initializeViewBinding(view: View) = TouristDataItemBinding.bind(view)
+        }
+
+        private inner class TouristFooter(): BindableItem<TouristFooterItemBinding>() {
+            override fun bind(viewBinding: TouristFooterItemBinding, position: Int) {
+                with(viewBinding) {
+                    imageViewAddNewTourist.setOnClickListener {
+                        requireContext().showShortToast(message = "add new tourist")
+                    }
+                }
+            }
+
+            override fun getLayout() = R.layout.tourist_footer_item
+
+            override fun initializeViewBinding(view: View) = TouristFooterItemBinding.bind(view)
         }
     }
 

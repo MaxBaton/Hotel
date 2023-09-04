@@ -22,4 +22,5 @@
     <color name="room_details_background">#1A0D72FF</color>
     <color name="error_item">#26EB5757</color>
     <color name="cursor_color">@color/black</color>
+    <color name="successful_pay">#F6F6F9</color>
 </resources>

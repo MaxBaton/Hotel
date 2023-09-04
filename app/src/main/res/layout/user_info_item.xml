@@ -27,8 +27,7 @@
         app:layout_constraintStart_toStartOf="@id/text_view_user_info"
         app:layout_constraintTop_toBottomOf="@id/text_view_user_info"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
-        app:endIconMode="clear_text">
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_phone_number"
@@ -46,7 +45,6 @@
         app:layout_constraintStart_toStartOf="@id/text_view_user_info"
         app:layout_constraintTop_toBottomOf="@id/txt_input_layout_phone_number"
         app:layout_constraintEnd_toEndOf="@id/txt_input_layout_phone_number"
-        app:endIconMode="clear_text"
         android:colorControlActivated="@color/cursor_color">
 
         <com.google.android.material.textfield.TextInputEditText

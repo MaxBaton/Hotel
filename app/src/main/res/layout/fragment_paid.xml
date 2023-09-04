@@ -11,35 +11,51 @@
         layout="@layout/action_bar_with_button_back"
         />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:src="@drawable/icon_star"
+    <FrameLayout
+        android:layout_width="@dimen/paid_fragment_frame_successful_pay_sizes"
+        android:layout_height="@dimen/paid_fragment_frame_successful_pay_sizes"
         app:layout_constraintBottom_toTopOf="@id/text_view_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"/>
+        android:layout_marginBottom="@dimen/paid_fragment_margin_top_bottom"
+        android:background="@drawable/round_successful_pay">
+
+
+        <ImageView
+            android:layout_width="@dimen/paid_fragment_icon_successful_pay_sizes"
+            android:layout_height="@dimen/paid_fragment_icon_successful_pay_sizes"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/icon_successful_pay"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/text_view_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/paid_fragment_title"
         android:textStyle="bold"
-        android:textSize="25sp"
+        android:textSize="@dimen/paid_fragment_text_title"
+        android:textAlignment="center"
+        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline_center" />
 
     <TextView
         android:id="@+id/text_view_message"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="Сообщение"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
+        android:textSize="@dimen/paid_fragment_text_subtitle"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/paid_fragment_margin_top_bottom"
+        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        android:textColor="@color/text_subtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_title" />
@@ -58,5 +74,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

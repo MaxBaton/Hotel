@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/fragment_background"
+    android:background="@drawable/round_corners_fragment_item"
     android:id="@+id/layout">
 
     <ImageView
-        android:id="@+id/image_view_open_close"
+        android:id="@+id/image_view_add_new_tourist"
         android:layout_width="@dimen/booking_fragment_tourist_header_up_down_icon_sizes"
         android:layout_height="@dimen/booking_fragment_tourist_header_up_down_icon_sizes"
-        android:src="@drawable/icon_tourist_header_up"
+        android:src="@drawable/icon_tourist_bottom_add"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
         android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
@@ -20,18 +20,18 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-        android:id="@+id/text_view_tourist_number"
+        android:id="@+id/text_view_tourist_add_new"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="20sp"
-        tools:text="Первый турист"
+        android:text="@string/booking_fragment_tourist_add_new"
         android:textAlignment="textStart"
         android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
-        app:layout_constraintEnd_toStartOf="@id/image_view_open_close"
+        app:layout_constraintEnd_toStartOf="@id/image_view_add_new_tourist"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/image_view_open_close"
-        app:layout_constraintBottom_toBottomOf="@id/image_view_open_close"
+        app:layout_constraintTop_toTopOf="@id/image_view_add_new_tourist"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_add_new_tourist"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
