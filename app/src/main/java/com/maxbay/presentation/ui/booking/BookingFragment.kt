@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -30,7 +31,6 @@ import com.maxbay.hotel.databinding.PriceDataItemBinding
 import com.maxbay.hotel.databinding.PriceItemBinding
 import com.maxbay.hotel.databinding.TouristDataItemBinding
 import com.maxbay.hotel.databinding.TouristFooterItemBinding
-import com.maxbay.hotel.databinding.TouristHeaderItemBinding
 import com.maxbay.hotel.databinding.TouristItemBinding
 import com.maxbay.hotel.databinding.UserInfoItemBinding
 import com.maxbay.presentation.ui.common.MyDividerItemDecoration
@@ -98,6 +98,10 @@ class BookingFragment: Fragment() {
                                     }
                                 }
                             }
+                        }else if (item is UserInfoItem) {
+                            if (!item.isFillAllData()) {
+                                isAllFill = false
+                            }
                         }
                     }
                 }
@@ -129,6 +133,17 @@ class BookingFragment: Fragment() {
         with(binding ?: return) {
             btnPay.visibility = View.VISIBLE
         }
+    }
+
+    private fun isNotBlankEditTextAndFillErrorIfNeed(editText: EditText): Boolean {
+        val isBlank = editText.text.toString().isBlank()
+        val color = if (isBlank) {
+            ContextCompat.getColor(requireContext(), R.color.error_item)
+        }else {
+            ContextCompat.getColor(requireContext(), R.color.white)
+        }
+        editText.setBackgroundColor(color)
+        return !isBlank
     }
 
     private fun populateAdapterBooking(bookingListData: List<BookingDataDomain>) {
@@ -249,11 +264,14 @@ class BookingFragment: Fragment() {
         }
     }
 
-    private inner class UserInfoItem(): BindableItem<UserInfoItemBinding>() {
+    private inner class UserInfoItem : BindableItem<UserInfoItemBinding>() {
         private var currPhoneStr: String = Constants.Error.EMPTY_STRING
         private val strBuilder = StringBuilder()
+        private var dataItemBinding: UserInfoItemBinding? = null
 
         override fun bind(viewBinding: UserInfoItemBinding, position: Int) {
+            dataItemBinding = viewBinding
+
             with(viewBinding) {
                 etPhoneNumber.setOnFocusChangeListener { v, hasFocus ->
                     if (hasFocus && etPhoneNumber.text.toString().trim().isEmpty()) {
@@ -343,6 +361,19 @@ class BookingFragment: Fragment() {
         override fun getLayout() = R.layout.user_info_item
 
         override fun initializeViewBinding(view: View) = UserInfoItemBinding.bind(view)
+
+        fun isFillAllData(): Boolean {
+            val isAllFillSet = mutableSetOf<Boolean>()
+
+            dataItemBinding?.let { itemBinding ->
+                with(itemBinding) {
+                    isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPhoneNumber))
+                    isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etEmail))
+                }
+            }
+
+            return !isAllFillSet.contains(false)
+        }
     }
 
     private inner class TouristItem(): BindableItem<TouristItemBinding>() {
@@ -369,20 +400,6 @@ class BookingFragment: Fragment() {
         override fun getLayout() = R.layout.tourist_item
 
         override fun initializeViewBinding(view: View) = TouristItemBinding.bind(view)
-
-        private inner class TouristHeader(
-            private val touristNumber: Int
-        ): BindableItem<TouristHeaderItemBinding>() {
-            override fun bind(viewBinding: TouristHeaderItemBinding, position: Int) {
-                with(viewBinding) {
-                    textViewTouristNumber.text = "$touristNumber Турист"
-                }
-            }
-
-            override fun getLayout() = R.layout.tourist_header_item
-
-            override fun initializeViewBinding(view: View) = TouristHeaderItemBinding.bind(view)
-        }
 
         inner class TouristDataItem(
             private val touristNumber: Int
@@ -430,16 +447,20 @@ class BookingFragment: Fragment() {
             }
 
             fun isFillAllData(): Boolean {
-                var isAllFill = true
+                val isAllFillSet = mutableSetOf<Boolean>()
 
                 dataItemBinding?.let { itemBinding ->
                     with(itemBinding) {
-                        if (etBirthday.text.toString().isBlank()) {
-                            isAllFill = false
-                        }
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etFirstname))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etSurname))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etBirthday))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etCitizenship))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPassportNumber))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPassportValidity))
                     }
                 }
-                return isAllFill
+
+                return !isAllFillSet.contains(false)
             }
         }
 
@@ -492,6 +513,9 @@ class BookingFragment: Fragment() {
                     with(priceDataItemBinding) {
                         textViewTitle.text = price.first
                         textViewData.text = price.second
+                        if (price.first == getString(R.string.booking_fragment_price_sum_charge_title)) {
+                            textViewData.setTextColor(ContextCompat.getColor(requireContext(), R.color.hotel_address_text_view))
+                        }
                     }
                 }
             }

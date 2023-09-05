@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="@dimen/booking_fragment_tourist_header_footer_text_size"
         android:text="@string/booking_fragment_tourist_add_new"
         android:textAlignment="textStart"
         android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"

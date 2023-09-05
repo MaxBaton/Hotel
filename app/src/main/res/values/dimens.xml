@@ -36,6 +36,7 @@
 <!--    BookingFragment-->
     <dimen name="booking_fragment_data_item_padding_top_bottom">10dp</dimen>
     <dimen name="booking_fragment_tourist_header_up_down_icon_sizes">32dp</dimen>
+    <dimen name="booking_fragment_tourist_header_footer_text_size">22sp</dimen>
 
 <!--    PaidFragment-->
     <dimen name="paid_fragment_icon_successful_pay_sizes">44dp</dimen>
@@ -65,4 +66,6 @@
 <!--    Arrow right room details icon-->
     <dimen name="icon_arrow_right_room_details_width">24dp</dimen>
     <dimen name="icon_arrow_right_room_details_height">25dp</dimen>
+<!--    Input text-->
+    <dimen name="edit_text_size">17sp</dimen>
 </resources>
