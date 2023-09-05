@@ -55,6 +55,7 @@
     <string name="toast_error_load_rooms_info">Ошибка загрузки данных о номерах!</string>
     <string name="toast_error_load_booking_info">Ошибка загрузки данных о бронировании!</string>
     <string name="toast_error_load_price_info">Ошибка загрузки данных о ценах!</string>
+    <string name="toast_error_not_fill_all_fields">Не все поля заполнены!</string>
 
 <!--    Action bar-->
     <string name="action_bar_title_hotel">Отель</string>

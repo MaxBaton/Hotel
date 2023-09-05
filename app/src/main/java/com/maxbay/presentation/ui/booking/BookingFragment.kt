@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.maxbay.domain.booking.models.BookingDataDomain
 import com.maxbay.domain.booking.usecases.email.IsValidEmail
 import com.maxbay.domain.booking.usecases.phone.GetLastNumberPosition
@@ -81,7 +82,31 @@ class BookingFragment: Fragment() {
             }
 
             btnPay.setOnClickListener {
-                findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
+                var isAllFill = true
+
+                for (i in 0 until groupieAdapter.groupCount) {
+                    val section = groupieAdapter.getGroupAtAdapterPosition(i)
+                    for (j in 0 until section.itemCount) {
+                        val item = section.getItem(j)
+                        if (item is TouristItem) {
+                            val sectionTourist = item.section
+                            for (k in 0 until sectionTourist.itemCount) {
+                                val touristDataItem = sectionTourist.getItem(k)
+                                if (touristDataItem is TouristItem.TouristDataItem) {
+                                    if (!touristDataItem.isFillAllData()) {
+                                        isAllFill = false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (isAllFill) {
+                    findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
+                }else {
+                    requireContext().showShortToast(message = getString(R.string.toast_error_not_fill_all_fields))
+                }
             }
 
             KeyboardVisibilityEvent.setEventListener(requireActivity(), viewLifecycleOwner) { isOpen ->
@@ -322,22 +347,20 @@ class BookingFragment: Fragment() {
 
     private inner class TouristItem(): BindableItem<TouristItemBinding>() {
         private val groupieAdapter = GroupieAdapter()
-        private val section = Section()
+        val section = Section()
 
         override fun bind(viewBinding: TouristItemBinding, position: Int) {
             with(viewBinding) {
                 section.let {
-                    it.setHideWhenEmpty(true)
-                    it.setHeader(TouristHeader(touristNumber = 1))
                     it.setFooter(TouristFooter())
-                    it.add(TouristDataItem())
+                    it.add(TouristDataItem(touristNumber = section.itemCount))
                 }
                 groupieAdapter.add(section)
 
                 recyclerViewTourists.let {
                     it.adapter = groupieAdapter
                     it.addItemDecoration(
-                        DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+                        MyDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
                     )
                 }
             }
@@ -361,23 +384,70 @@ class BookingFragment: Fragment() {
             override fun initializeViewBinding(view: View) = TouristHeaderItemBinding.bind(view)
         }
 
-        private inner class TouristDataItem(): BindableItem<TouristDataItemBinding>() {
+        inner class TouristDataItem(
+            private val touristNumber: Int
+        ): BindableItem<TouristDataItemBinding>() {
+            private var isOpen: Boolean = true
+            private var dataItemBinding: TouristDataItemBinding? = null
             override fun bind(viewBinding: TouristDataItemBinding, position: Int) {
-                with(viewBinding) {
+                dataItemBinding = viewBinding
 
+                with(viewBinding) {
+                    textViewTouristNumber.text = touristNumber.toString()
+
+                    imageViewOpenClose.setOnClickListener {
+                        isOpen = !isOpen
+
+                        showHideLayoutDataByOpenState(viewBinding = viewBinding)
+
+                        val imageId = getIdImageByOpenState()
+                        Glide
+                            .with(requireContext())
+                            .load(imageId)
+                            .into(imageViewOpenClose)
+                    }
                 }
             }
 
             override fun getLayout() = R.layout.tourist_data_item
 
             override fun initializeViewBinding(view: View) = TouristDataItemBinding.bind(view)
+
+            private fun getIdImageByOpenState(): Int {
+                return if (isOpen) {
+                    R.drawable.icon_tourist_header_up
+                }else {
+                    R.drawable.icon_tourist_header_down
+                }
+            }
+
+            private fun showHideLayoutDataByOpenState(viewBinding: TouristDataItemBinding) {
+                if (isOpen) {
+                    viewBinding.layoutInputData.visibility = View.VISIBLE
+                }else {
+                    viewBinding.layoutInputData.visibility = View.GONE
+                }
+            }
+
+            fun isFillAllData(): Boolean {
+                var isAllFill = true
+
+                dataItemBinding?.let { itemBinding ->
+                    with(itemBinding) {
+                        if (etBirthday.text.toString().isBlank()) {
+                            isAllFill = false
+                        }
+                    }
+                }
+                return isAllFill
+            }
         }
 
         private inner class TouristFooter(): BindableItem<TouristFooterItemBinding>() {
             override fun bind(viewBinding: TouristFooterItemBinding, position: Int) {
                 with(viewBinding) {
                     imageViewAddNewTourist.setOnClickListener {
-                        requireContext().showShortToast(message = "add new tourist")
+                        section.add(TouristDataItem(touristNumber = section.itemCount))
                     }
                 }
             }
