@@ -256,7 +256,8 @@ class BookingFragment: Fragment() {
                     }
                     etPhoneNumber.setSelection(etPhoneNumber.text.toString().trim().length)
 
-                    val background = if (!hasFocus && isBlankPhone) {
+                    val isValidPhone = IsFillPhoneNumber.isFill(phoneNumber = etPhoneNumber.text.toString().trim())
+                    val background = if (!hasFocus && !isValidPhone) {
                         ContextCompat.getColor(requireContext(), R.color.error_item)
                     }else {
                         ContextCompat.getColor(requireContext(), R.color.fragment_background)
