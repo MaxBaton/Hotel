@@ -2,6 +2,7 @@ package com.maxbay.di.domain
 
 import com.maxbay.domain.booking.repository.BookingRepository
 import com.maxbay.domain.booking.usecases.GetBookingPrice
+import com.maxbay.domain.booking.usecases.tourist.GetSumPrice
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +16,11 @@ class BookingDomainModule {
     @ViewModelScoped
     fun provideGetBookingPrice(bookingRepository: BookingRepository): GetBookingPrice {
         return GetBookingPrice(bookingRepository = bookingRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetSumPrice(): GetSumPrice {
+        return GetSumPrice()
     }
 }

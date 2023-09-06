@@ -29,6 +29,7 @@ import com.maxbay.hotel.databinding.BookingItemBinding
 import com.maxbay.hotel.databinding.FragmentBookingBinding
 import com.maxbay.hotel.databinding.PriceDataItemBinding
 import com.maxbay.hotel.databinding.PriceItemBinding
+import com.maxbay.hotel.databinding.RoundButtonItemBinding
 import com.maxbay.hotel.databinding.TouristDataItemBinding
 import com.maxbay.hotel.databinding.TouristFooterItemBinding
 import com.maxbay.hotel.databinding.TouristItemBinding
@@ -70,7 +71,6 @@ class BookingFragment: Fragment() {
                 progressBar.visibility = View.GONE
 
                 if (bookingListData != null) {
-                    showAllViews()
                     populateAdapterBooking(bookingListData = bookingListData)
                 }else {
                     requireContext().showShortToast(message = getString(R.string.toast_error_load_booking_info))
@@ -80,46 +80,6 @@ class BookingFragment: Fragment() {
             actionBar.imageViewBack.setOnClickListener {
                 findNavController().popBackStack()
             }
-
-            btnPay.setOnClickListener {
-                var isAllFill = true
-
-                for (i in 0 until groupieAdapter.groupCount) {
-                    val section = groupieAdapter.getGroupAtAdapterPosition(i)
-                    for (j in 0 until section.itemCount) {
-                        val item = section.getItem(j)
-                        if (item is TouristItem) {
-                            val sectionTourist = item.section
-                            for (k in 0 until sectionTourist.itemCount) {
-                                val touristDataItem = sectionTourist.getItem(k)
-                                if (touristDataItem is TouristItem.TouristDataItem) {
-                                    if (!touristDataItem.isFillAllData()) {
-                                        isAllFill = false
-                                    }
-                                }
-                            }
-                        }else if (item is UserInfoItem) {
-                            if (!item.isFillAllData()) {
-                                isAllFill = false
-                            }
-                        }
-                    }
-                }
-
-                if (isAllFill) {
-                    findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
-                }else {
-                    requireContext().showShortToast(message = getString(R.string.toast_error_not_fill_all_fields))
-                }
-            }
-
-            KeyboardVisibilityEvent.setEventListener(requireActivity(), viewLifecycleOwner) { isOpen ->
-                if (isOpen) {
-                    btnPay.visibility = View.GONE
-                }else {
-                    btnPay.visibility = View.VISIBLE
-                }
-            }
         }
     }
 
@@ -127,12 +87,6 @@ class BookingFragment: Fragment() {
         super.onDestroyView()
         binding = null
         groupieAdapter.clear()
-    }
-
-    private fun showAllViews() {
-        with(binding ?: return) {
-            btnPay.visibility = View.VISIBLE
-        }
     }
 
     private fun isNotBlankEditTextAndFillErrorIfNeed(editText: EditText): Boolean {
@@ -181,6 +135,10 @@ class BookingFragment: Fragment() {
                 }
             )
         }
+
+        groupieAdapter.add(Section().apply {
+            add(PayButtonItem(sumPrice = bookingViewModel.getSumPrice(price = bookingPrice)))
+        })
     }
 
     private inner class BookingHotelItem(
@@ -544,5 +502,55 @@ class BookingFragment: Fragment() {
                 holder.bind(data)
             }
         }
+    }
+
+    private inner class PayButtonItem(
+        private val sumPrice: Int
+    ): BindableItem<RoundButtonItemBinding>() {
+        override fun bind(viewBinding: RoundButtonItemBinding, position: Int) {
+            val text = if (sumPrice != Constants.Error.ERROR_INT) {
+                getString(R.string.booking_fragment_btn_pay_text_with_sum, sumPrice)
+            }else {
+                getString(R.string.booking_fragment_btn_pay_default_text)
+            }
+            with(viewBinding) {
+                btnPay.text = text
+                btnPay.setOnClickListener {
+                    var isAllFill = true
+
+                    for (i in 0 until groupieAdapter.groupCount) {
+                        val section = groupieAdapter.getGroupAtAdapterPosition(i)
+                        for (j in 0 until section.itemCount) {
+                            val item = section.getItem(j)
+                            if (item is TouristItem) {
+                                val sectionTourist = item.section
+                                for (k in 0 until sectionTourist.itemCount) {
+                                    val touristDataItem = sectionTourist.getItem(k)
+                                    if (touristDataItem is TouristItem.TouristDataItem) {
+                                        if (!touristDataItem.isFillAllData()) {
+                                            isAllFill = false
+                                        }
+                                    }
+                                }
+                            }else if (item is UserInfoItem) {
+                                if (!item.isFillAllData()) {
+                                    isAllFill = false
+                                }
+                            }
+                        }
+                    }
+
+                    if (isAllFill) {
+                        findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
+                    }else {
+                        requireContext().showShortToast(message = getString(R.string.toast_error_not_fill_all_fields))
+                    }
+                }
+            }
+        }
+
+        override fun getLayout() = R.layout.round_button_item
+
+        override fun initializeViewBinding(view: View) = RoundButtonItemBinding.bind(view)
     }
 }
