@@ -88,7 +88,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_birthday"
                 style="@style/Hotel_TextInputEditText"
-                android:hint="@string/booking_fragment_tourist_bithday"/>
+                android:hint="@string/booking_fragment_tourist_bithday"
+                android:inputType="date"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,7 +122,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_passport_validity"
                 style="@style/Hotel_TextInputEditText"
-                android:hint="@string/booking_fragment_tourist_passport_validity"/>
+                android:hint="@string/booking_fragment_tourist_passport_validity"
+                android:inputType="date"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
