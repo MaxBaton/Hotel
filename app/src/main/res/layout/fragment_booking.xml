@@ -23,7 +23,6 @@
         android:id="@+id/recycler_view_booking_price"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"
         app:layout_constraintTop_toBottomOf="@id/action_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/booking_hotel_item"

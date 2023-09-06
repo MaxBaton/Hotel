@@ -7,7 +7,7 @@
     android:background="@color/fragment_background">
 
     <Button
-        android:id="@+id/btn_pay"
+        android:id="@+id/btn"
         style="@style/Hotel_RoundButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

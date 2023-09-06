@@ -63,7 +63,7 @@ class BookingFragment: Fragment() {
                     MyDividerItemDecoration(
                         context = requireContext(),
                         orientation = DividerItemDecoration.VERTICAL
-                    )
+                    ), -1
                 )
             }
 
@@ -514,8 +514,8 @@ class BookingFragment: Fragment() {
                 getString(R.string.booking_fragment_btn_pay_default_text)
             }
             with(viewBinding) {
-                btnPay.text = text
-                btnPay.setOnClickListener {
+                btn.text = text
+                btn.setOnClickListener {
                     var isAllFill = true
 
                     for (i in 0 until groupieAdapter.groupCount) {

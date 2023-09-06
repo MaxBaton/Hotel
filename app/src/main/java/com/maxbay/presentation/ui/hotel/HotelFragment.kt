@@ -22,6 +22,7 @@ import com.maxbay.hotel.databinding.HotelFragmentCommonDataItemBinding
 import com.maxbay.hotel.databinding.HotelFragmentDetailDataItemBinding
 import com.maxbay.hotel.databinding.PeculiarityItemBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
+import com.maxbay.hotel.databinding.RoundButtonItemBinding
 import com.maxbay.presentation.ui.common.MyDividerItemDecoration
 import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.hotel.HotelViewModel
@@ -58,8 +59,6 @@ class HotelFragment: Fragment() {
                 progressBar.visibility = View.GONE
 
                 if (hotelWithNull != null) {
-                    showAllViews()
-
                     populateAdapter(hotel = hotelWithNull)
                     recyclerView.let {
                         it.adapter = groupieAdapter
@@ -75,12 +74,6 @@ class HotelFragment: Fragment() {
                 }else {
                     requireContext().showShortToast(message = getString(R.string.toast_error_load_hotel_info))
                 }
-            }
-
-            btnSelectRoom.setOnClickListener {
-                val name = hotelName ?: Constants.Error.EMPTY_STRING
-                val bundle = bundleOf(Constants.Arguments.ARGUMENT_HOTEL_NAME to name)
-                findNavController().navigate(R.id.action_hotelFragment_to_roomsFragment, bundle)
             }
         }
     }
@@ -100,6 +93,11 @@ class HotelFragment: Fragment() {
         groupieAdapter.add(
             Section().apply {
                 add(HotelDetailDataItem(hotel = hotel))
+            }
+        )
+        groupieAdapter.add(
+            Section().apply {
+                add(SelectRoomItem())
             }
         )
     }
@@ -122,12 +120,6 @@ class HotelFragment: Fragment() {
                 subtitle = getString(R.string.hotel_fragment_action_subtitle)
             )
         )
-    }
-
-    private fun showAllViews() {
-        with(binding ?: return) {
-            bottomLayout.visibility = View.VISIBLE
-        }
     }
 
     private inner class HotelCommonDataItem(
@@ -278,5 +270,23 @@ class HotelFragment: Fragment() {
                 holder.bind(action = action)
             }
         }
+    }
+
+    private inner class SelectRoomItem: BindableItem<RoundButtonItemBinding>() {
+        override fun bind(viewBinding: RoundButtonItemBinding, position: Int) {
+            with(viewBinding) {
+                btn.text = getString(R.string.hotel_fragment_select_room_button)
+                btn.setOnClickListener {
+                    val name = hotelName ?: Constants.Error.EMPTY_STRING
+                    val bundle = bundleOf(Constants.Arguments.ARGUMENT_HOTEL_NAME to name)
+                    findNavController().navigate(R.id.action_hotelFragment_to_roomsFragment, bundle)
+                }
+            }
+        }
+
+
+        override fun getLayout() = R.layout.round_button_item
+
+        override fun initializeViewBinding(view: View) = RoundButtonItemBinding.bind(view)
     }
 }
