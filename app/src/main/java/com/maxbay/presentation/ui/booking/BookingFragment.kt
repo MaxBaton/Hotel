@@ -410,7 +410,7 @@ class BookingFragment: Fragment() {
                 dataItemBinding = viewBinding
 
                 with(viewBinding) {
-                    textViewTouristNumber.text = touristNumber.toString()
+                    textViewTouristNumber.text = getTouristNumberStringByNumber()
 
                     imageViewOpenClose.setOnClickListener {
                         isOpen = !isOpen
@@ -462,9 +462,18 @@ class BookingFragment: Fragment() {
 
                 return !isAllFillSet.contains(false)
             }
+
+            private fun getTouristNumberStringByNumber(): String {
+                val touristNumbers = resources.getStringArray(R.array.tourist_numbers)
+                return try {
+                    "${touristNumbers[touristNumber - 1]} ${getString(R.string.tourist_item)}"
+                }catch (e: IndexOutOfBoundsException) {
+                    "$touristNumber ${getString(R.string.tourist_item)}"
+                }
+            }
         }
 
-        private inner class TouristFooter(): BindableItem<TouristFooterItemBinding>() {
+        private inner class TouristFooter : BindableItem<TouristFooterItemBinding>() {
             override fun bind(viewBinding: TouristFooterItemBinding, position: Int) {
                 with(viewBinding) {
                     imageViewAddNewTourist.setOnClickListener {

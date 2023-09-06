@@ -62,4 +62,19 @@
     <string name="action_bar_title_rooms">Номера</string>
     <string name="action_bar_title_booking">Бронирование</string>
     <string name="action_bar_title_paid">Заказ оплачен</string>
+
+<!--    Tourist item numbers-->
+    <string name="tourist_item">турист</string>
+    <string-array name="tourist_numbers">
+        <item>Первый</item>
+        <item>Второй</item>
+        <item>Третий</item>
+        <item>Четвертый</item>
+        <item>Пятый</item>
+        <item>Шестой</item>
+        <item>Седьмой</item>
+        <item>Восьмой</item>
+        <item>Девятый</item>
+        <item>Десятый</item>
+    </string-array>
 </resources>
