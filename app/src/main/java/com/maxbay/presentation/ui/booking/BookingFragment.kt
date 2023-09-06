@@ -351,18 +351,19 @@ class BookingFragment: Fragment() {
 
             dataItemBinding?.let { itemBinding ->
                 with(itemBinding) {
-                    isAllFillSet.add(
-                        isNotBlankEditTextAndFillErrorIfNeed(
-                            editText = etPhoneNumber,
-                            txtInputLayout = txtInputLayoutPhoneNumber
-                        )
-                    )
-                    isAllFillSet.add(
-                        isNotBlankEditTextAndFillErrorIfNeed(
-                            editText = etEmail,
-                            txtInputLayout = txtInputLayoutEmail
-                        )
-                    )
+                    val isValidEmail = IsValidEmail.isValid(email = etEmail.text.toString().trim())
+                    val isValidPhone = IsFillPhoneNumber.isFill(phoneNumber = etPhoneNumber.text.toString().trim())
+
+                    isAllFillSet.add(isValidEmail)
+                    isAllFillSet.add(isValidPhone)
+
+                    val colorError = ContextCompat.getColor(requireContext(), R.color.error_item)
+                    if (!isValidEmail) {
+                        txtInputLayoutEmail.setBackgroundColor(colorError)
+                    }
+                    if (!isValidPhone) {
+                        txtInputLayoutPhoneNumber.setBackgroundColor(colorError)
+                    }
                 }
             }
 
