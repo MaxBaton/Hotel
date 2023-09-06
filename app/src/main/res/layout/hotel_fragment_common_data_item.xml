@@ -104,6 +104,8 @@
         android:id="@+id/text_view_min_price"
         style="@style/Hotel_TextViewPrice"
         tools:text="от 132200 р"
+        android:layout_marginBottom="@dimen/hotel_fragment_margin_top_elements"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_hotel_address"
         app:layout_constraintStart_toStartOf="@id/star_linear_layout"
         />

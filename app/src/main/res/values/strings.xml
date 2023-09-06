@@ -14,6 +14,7 @@
 
 <!--    RoomsFragment-->
     <string name="rooms_details_title">Подробнее о номере</string>
+    <string name="rooms_fragment_select_room_button">Выбрать номер</string>
 
 <!--    BookingFragment-->
     <string name="booking_fragment_btn_pay_default_text">Оплатить</string>
