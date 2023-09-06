@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputLayout
 import com.maxbay.domain.booking.models.BookingDataDomain
 import com.maxbay.domain.booking.usecases.email.IsValidEmail
 import com.maxbay.domain.booking.usecases.phone.GetLastNumberPosition
@@ -89,15 +90,32 @@ class BookingFragment: Fragment() {
         groupieAdapter.clear()
     }
 
-    private fun isNotBlankEditTextAndFillErrorIfNeed(editText: EditText): Boolean {
+    private fun isNotBlankEditTextAndFillErrorIfNeed(
+        editText: EditText,
+        txtInputLayout: TextInputLayout
+    ): Boolean {
         val isBlank = editText.text.toString().isBlank()
         val color = if (isBlank) {
             ContextCompat.getColor(requireContext(), R.color.error_item)
         }else {
-            ContextCompat.getColor(requireContext(), R.color.white)
+            ContextCompat.getColor(requireContext(), R.color.fragment_background)
         }
-        editText.setBackgroundColor(color)
+        txtInputLayout.setBackgroundColor(color)
         return !isBlank
+    }
+
+    private fun setEditTextFocusListener(
+        editText: EditText,
+        txtInputLayout: TextInputLayout
+    ) {
+        editText.setOnFocusChangeListener { v, hasFocus ->
+            val color = if (hasFocus || editText.text.toString().isNotBlank()) {
+                ContextCompat.getColor(requireContext(), R.color.fragment_background)
+            }else {
+                ContextCompat.getColor(requireContext(), R.color.error_item)
+            }
+            txtInputLayout.setBackgroundColor(color)
+        }
     }
 
     private fun populateAdapterBooking(bookingListData: List<BookingDataDomain>) {
@@ -232,10 +250,18 @@ class BookingFragment: Fragment() {
 
             with(viewBinding) {
                 etPhoneNumber.setOnFocusChangeListener { v, hasFocus ->
-                    if (hasFocus && etPhoneNumber.text.toString().trim().isEmpty()) {
+                    val isBlankPhone = etPhoneNumber.text.toString().isBlank()
+                    if (hasFocus && isBlankPhone) {
                         etPhoneNumber.setText(Constants.Phone.TEMPLATE, TextView.BufferType.EDITABLE)
                     }
                     etPhoneNumber.setSelection(etPhoneNumber.text.toString().trim().length)
+
+                    val background = if (!hasFocus && isBlankPhone) {
+                        ContextCompat.getColor(requireContext(), R.color.error_item)
+                    }else {
+                        ContextCompat.getColor(requireContext(), R.color.fragment_background)
+                    }
+                    txtInputLayoutPhoneNumber.setBackgroundColor(background)
                 }
 
                 etPhoneNumber.addTextChangedListener(object: TextWatcher {
@@ -306,12 +332,12 @@ class BookingFragment: Fragment() {
                 })
 
                 etEmail.setOnFocusChangeListener { v, hasFocus ->
-                    val color = if (!hasFocus && !IsValidEmail.isValid(email = etEmail.text.toString().trim())) {
+                    val background = if (!hasFocus && !IsValidEmail.isValid(email = etEmail.text.toString().trim())) {
                         ContextCompat.getColor(requireContext(), R.color.error_item)
                     }else {
-                        ContextCompat.getColor(requireContext(), R.color.black)
+                        ContextCompat.getColor(requireContext(), R.color.fragment_background)
                     }
-                    etEmail.setTextColor(color)
+                    txtInputLayoutEmail.setBackgroundColor(background)
                 }
             }
         }
@@ -325,8 +351,18 @@ class BookingFragment: Fragment() {
 
             dataItemBinding?.let { itemBinding ->
                 with(itemBinding) {
-                    isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPhoneNumber))
-                    isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etEmail))
+                    isAllFillSet.add(
+                        isNotBlankEditTextAndFillErrorIfNeed(
+                            editText = etPhoneNumber,
+                            txtInputLayout = txtInputLayoutPhoneNumber
+                        )
+                    )
+                    isAllFillSet.add(
+                        isNotBlankEditTextAndFillErrorIfNeed(
+                            editText = etEmail,
+                            txtInputLayout = txtInputLayoutEmail
+                        )
+                    )
                 }
             }
 
@@ -381,6 +417,13 @@ class BookingFragment: Fragment() {
                             .load(imageId)
                             .into(imageViewOpenClose)
                     }
+
+                    setEditTextFocusListener(editText = etFirstname, txtInputLayout = txtInputLayoutFirstname)
+                    setEditTextFocusListener(editText = etSurname, txtInputLayout = txtInputLayoutSurname)
+                    setEditTextFocusListener(editText = etBirthday, txtInputLayout = txtInputLayoutBirthday)
+                    setEditTextFocusListener(editText = etCitizenship, txtInputLayout = txtInputLayoutCitizenship)
+                    setEditTextFocusListener(editText = etPassportNumber, txtInputLayout = txtInputLayoutPassportNumber)
+                    setEditTextFocusListener(editText = etPassportValidity, txtInputLayout = txtInputLayoutPassportValidity)
                 }
             }
 
@@ -409,12 +452,12 @@ class BookingFragment: Fragment() {
 
                 dataItemBinding?.let { itemBinding ->
                     with(itemBinding) {
-                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etFirstname))
-                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etSurname))
-                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etBirthday))
-                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etCitizenship))
-                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPassportNumber))
-                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPassportValidity))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etFirstname, txtInputLayout = txtInputLayoutFirstname))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etSurname, txtInputLayout = txtInputLayoutSurname))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etBirthday, txtInputLayout = txtInputLayoutBirthday))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etCitizenship, txtInputLayout = txtInputLayoutCitizenship))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPassportNumber, txtInputLayout = txtInputLayoutPassportNumber))
+                        isAllFillSet.add(isNotBlankEditTextAndFillErrorIfNeed(editText = etPassportValidity, txtInputLayout = txtInputLayoutPassportValidity))
                     }
                 }
 
