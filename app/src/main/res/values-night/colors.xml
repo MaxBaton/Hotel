@@ -5,7 +5,8 @@
 
     <color name="primary">@color/black</color>
 
-    <color name="fragment_background">#4A4A4A</color>
+    <color name="fragment_background_main">#4A4A4A</color>
+    <color name="fragment_background">#F6F6F9</color>
     <color name="toast_background">@color/primary</color>
     <color name="progress_bar">@color/white</color>
     <color name="icon_update">@color/white</color>
@@ -20,4 +21,5 @@
     <color name="error_item">#26EB5757</color>
     <color name="cursor_color">@color/white</color>
     <color name="successful_pay">#F6F6F9</color>
+    <color name="text_input_hint_text_color">#A9ABB7</color>
 </resources>

@@ -3,7 +3,6 @@
 <!--    HotelFragment-->
     <dimen name="hotel_fragment_margin_start_end_elements">16dp</dimen>
     <dimen name="hotel_fragment_icon_update_sizes">130dp</dimen>
-    <dimen name="hotel_fragment_margin_top_elements">10dp</dimen>
     <dimen name="hotel_fragment_text_view_hotel_name_size">22sp</dimen>
     <dimen name="hotel_fragment_text_view_hotel_address_size">14sp</dimen>
     <dimen name="hotel_fragment_text_view_hotel_min_price_size">26sp</dimen>
@@ -46,13 +45,6 @@
     <dimen name="paid_fragment_margin_top_bottom">20dp</dimen>
 
 <!--    Common-->
-    <dimen name="round_button_text_size">16sp</dimen>
-    <dimen name="round_button_margins">20dp</dimen>
-    <dimen name="round_button_corner_radius">15dp</dimen>
-    <dimen name="arrow_icon_size">30dp</dimen>
-    <dimen name="action_bar_title_size">18sp</dimen>
-    <dimen name="action_bar_title_margin_start_end">5dp</dimen>
-    <dimen name="icon_arrow_back_sizes">44dp</dimen>
 <!--    Star icon-->
     <dimen name="icon_star_sizes">15dp</dimen>
 <!--    Round in page indicator-->
@@ -68,4 +60,15 @@
     <dimen name="icon_arrow_right_room_details_height">25dp</dimen>
 <!--    Input text-->
     <dimen name="edit_text_size">17sp</dimen>
+<!--    TextInputLayout-->
+    <dimen name="txt_input_layout_paddings_top">10dp</dimen>
+<!--    Other-->
+    <dimen name="round_button_text_size">16sp</dimen>
+    <dimen name="round_button_margins">20dp</dimen>
+    <dimen name="round_button_corner_radius">15dp</dimen>
+    <dimen name="arrow_icon_size">30dp</dimen>
+    <dimen name="action_bar_title_size">18sp</dimen>
+    <dimen name="action_bar_title_margin_start_end">5dp</dimen>
+    <dimen name="icon_arrow_back_sizes">44dp</dimen>
+    <dimen name="default_margin_top_elements">10dp</dimen>
 </resources>

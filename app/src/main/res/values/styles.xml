@@ -26,31 +26,32 @@
     </style>
 
     <style name="Hotel_TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/text_input_hint_text_color</item>
+        <item name="hintTextColor">@color/text_input_hint_text_color</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="android:colorControlActivated">@android:color/transparent</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="android:background">@drawable/round_text_input_layout</item>
+        <item name="android:paddingTop">@dimen/txt_input_layout_paddings_top</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/default_margin_top_elements</item>
+    </style>
+
+    <style name="Hotel_TextInputLayoutUser" parent="Hotel_TextInputLayout">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/hotel_fragment_margin_top_elements</item>
-        <item name="hintTextColor">@color/black</item>
-        <item name="boxStrokeColor">@color/black</item>
-        <item name="android:colorControlActivated">@android:color/transparent</item>
-        <item name="endIconMode">clear_text</item>
     </style>
 
-    <style name="Hotel_TextInputLayoutInList" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+    <style name="Hotel_TextInputLayoutTourist" parent="Hotel_TextInputLayout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="hintTextColor">@color/black</item>
-        <item name="boxStrokeColor">@color/black</item>
-        <item name="android:colorControlActivated">@android:color/transparent</item>
-        <item name="endIconMode">clear_text</item>
-        <item name="android:paddingStart">10dp</item>
-        <item name="android:paddingTop">10dp</item>
     </style>
 
-    <style name="Hotel_TextInputEditText" parent="ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox">
+    <style name="Hotel_TextInputEditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:inputType">text</item>
         <item name="android:textSize">@dimen/edit_text_size</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_et_drawable</item>
     </style>
 
     <style name="Hotel_FrameLayoutPhotos">
@@ -74,7 +75,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/hotel_fragment_common_data_min_price_text_size</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginTop">@dimen/hotel_fragment_margin_top_elements</item>
+        <item name="android:layout_marginTop">@dimen/default_margin_top_elements</item>
     </style>
 
     <style name="Hotel_TextViewPriceDescription">

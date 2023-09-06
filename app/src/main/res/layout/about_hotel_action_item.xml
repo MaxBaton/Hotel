@@ -28,7 +28,7 @@
         android:textSize="@dimen/hotel_fragment_detail_about_the_hotel_title_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/image_view_action"
-        android:layout_marginStart="@dimen/hotel_fragment_margin_top_elements"
+        android:layout_marginStart="@dimen/default_margin_top_elements"
         android:layout_marginTop="@dimen/hotel_fragment_detail_about_the_hotel_item_margin_top_bottom"
         />
 
