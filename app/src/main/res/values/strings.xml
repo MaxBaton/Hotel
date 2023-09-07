@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hotel</string>
+    <string name="app_name">Отель</string>
     <string name="price_in_rubles">%1$d \u20BD</string>
 
 <!--    HotelFragment-->
