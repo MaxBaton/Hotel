@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="line">
+                    <padding android:top="@dimen/divider_line_height"/>
+                    <size android:height="@dimen/divider_line_height" />
+                    <solid android:color="@color/fragment_background" /> <!-- Change the color to your desired divider color -->
+                </shape>
+            </item>
+
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/round_button_corner_radius"/>
+                    <solid android:color="@color/white"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

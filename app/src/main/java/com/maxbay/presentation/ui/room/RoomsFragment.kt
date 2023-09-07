@@ -110,15 +110,19 @@ class RoomsFragment: Fragment() {
 
         override fun onBindViewHolder(holder: RoomsViewHolder, position: Int) {
             val room = rooms[position]
-            val backgroundDrawable = if (position == rooms.size - 1) {
-                ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_without_bottom)
-            }else {
-                ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_item)
-            }
+            val backgroundDrawable = getDrawableFromPosition(position = position, size = rooms.size)
             holder.bind(
                 room = room,
                 backgroundDrawable = backgroundDrawable
             )
+        }
+
+        private fun getDrawableFromPosition(position: Int, size: Int): Drawable? {
+            return when(position) {
+                size - 1 -> ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_without_bottom)
+                0 -> ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_item_with_top_delimiter)
+                else -> ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_item)
+            }
         }
 
         private inner class RoomPeculiaritiesAdapter(
