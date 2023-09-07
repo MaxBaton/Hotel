@@ -5,8 +5,8 @@
 
     <color name="primary">@color/black</color>
 
-    <color name="fragment_background_main">@color/black</color>
-    <color name="fragment_background">#4A4A4A</color>
+    <color name="fragment_background_main">#232323</color>
+    <color name="fragment_background">@color/black</color>
     <color name="toast_background">@color/hotel_address_text_view</color>
     <color name="progress_bar">@color/white</color>
     <color name="icon_update">@color/white</color>
@@ -22,7 +22,7 @@
     <color name="room_details_background">#1A0D72FF</color>
     <color name="error_item">#66CD0000</color>
     <color name="cursor_color">@color/white</color>
-    <color name="successful_pay">#CC636363</color>
+    <color name="successful_pay">@color/fragment_background_main</color>
     <color name="text_input_hint_text_color">#A9ABB7</color>
     <color name="icon_fill">#00FFFFFF</color>
 </resources>
