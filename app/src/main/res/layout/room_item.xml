@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/round_corners_fragment_item">
+    android:background="@drawable/round_corners_fragment_item"
+    android:id="@+id/item_layout">
 
     <FrameLayout
         android:id="@+id/photos_layout"

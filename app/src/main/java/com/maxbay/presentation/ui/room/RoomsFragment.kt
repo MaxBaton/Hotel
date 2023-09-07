@@ -1,9 +1,11 @@
 package com.maxbay.presentation.ui.room
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -73,8 +75,12 @@ class RoomsFragment: Fragment() {
         private inner class RoomsViewHolder(
             private val roomItemBinding: RoomItemBinding
         ): RecyclerView.ViewHolder(roomItemBinding.root) {
-            fun bind(room: Room) {
+            fun bind(room: Room, backgroundDrawable: Drawable?) {
                 with(roomItemBinding) {
+                    backgroundDrawable?.let { drawable ->
+                        itemLayout.background = drawable
+                    }
+
                     textViewRoomName.text = room.name
                     textViewPrice.text = getString(R.string.price_in_rubles, room.price)
                     textViewPricePer.text = room.pricePer.lowercase()
@@ -104,7 +110,15 @@ class RoomsFragment: Fragment() {
 
         override fun onBindViewHolder(holder: RoomsViewHolder, position: Int) {
             val room = rooms[position]
-            holder.bind(room)
+            val backgroundDrawable = if (position == rooms.size - 1) {
+                ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_without_bottom)
+            }else {
+                ContextCompat.getDrawable(requireContext(), R.drawable.round_corners_fragment_item)
+            }
+            holder.bind(
+                room = room,
+                backgroundDrawable = backgroundDrawable
+            )
         }
 
         private inner class RoomPeculiaritiesAdapter(
