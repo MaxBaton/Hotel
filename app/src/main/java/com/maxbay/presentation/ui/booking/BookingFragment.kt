@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputLayout
 import com.maxbay.domain.booking.models.BookingDataDomain
+import com.maxbay.domain.booking.models.TouristInfo
+import com.maxbay.domain.booking.models.UserInfo
 import com.maxbay.domain.booking.usecases.email.IsValidEmail
 import com.maxbay.domain.booking.usecases.phone.GetLastNumberPosition
 import com.maxbay.domain.booking.usecases.phone.GetNewPhoneStrAfterInput
@@ -41,7 +43,6 @@ import com.maxbay.presentation.viewmodel.booking.BookingViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import kotlin.text.StringBuilder
 
 class BookingFragment: Fragment() {
@@ -249,6 +250,13 @@ class BookingFragment: Fragment() {
             dataItemBinding = viewBinding
 
             with(viewBinding) {
+                bookingViewModel.userInfoLiveData.observe(viewLifecycleOwner) { userInfoWithNull ->
+                    userInfoWithNull?.let { userInfo ->
+                        etPhoneNumber.setText(userInfo.phoneNumber, TextView.BufferType.EDITABLE)
+                        etEmail.setText(userInfo.email, TextView.BufferType.EDITABLE)
+                    }
+                }
+
                 etPhoneNumber.setOnFocusChangeListener { v, hasFocus ->
                     val isBlankPhone = etPhoneNumber.text.toString().isBlank()
                     if (hasFocus && isBlankPhone) {
@@ -347,13 +355,18 @@ class BookingFragment: Fragment() {
 
         override fun initializeViewBinding(view: View) = UserInfoItemBinding.bind(view)
 
-        fun isFillAllData(): Boolean {
+        fun checkIsFillAllDataAndGet(): UserInfo? {
             val isAllFillSet = mutableSetOf<Boolean>()
+            var phoneNumber = Constants.Error.EMPTY_STRING
+            var email = Constants.Error.EMPTY_STRING
 
             dataItemBinding?.let { itemBinding ->
                 with(itemBinding) {
-                    val isValidEmail = IsValidEmail.isValid(email = etEmail.text.toString().trim())
-                    val isValidPhone = IsFillPhoneNumber.isFill(phoneNumber = etPhoneNumber.text.toString().trim())
+                    email = etEmail.text.toString().trim()
+                    phoneNumber = etPhoneNumber.text.toString().trim()
+
+                    val isValidEmail = IsValidEmail.isValid(email = email)
+                    val isValidPhone = IsFillPhoneNumber.isFill(phoneNumber = phoneNumber)
 
                     isAllFillSet.add(isValidEmail)
                     isAllFillSet.add(isValidPhone)
@@ -368,7 +381,14 @@ class BookingFragment: Fragment() {
                 }
             }
 
-            return !isAllFillSet.contains(false)
+            return if (!isAllFillSet.contains(false)) {
+                UserInfo(
+                    phoneNumber = phoneNumber,
+                    email = email
+                )
+            }else {
+                null
+            }
         }
     }
 
@@ -406,6 +426,17 @@ class BookingFragment: Fragment() {
                 dataItemBinding = viewBinding
 
                 with(viewBinding) {
+                    bookingViewModel.touristInfoLiveData.observe(viewLifecycleOwner) { touristInfoWithNull ->
+                        touristInfoWithNull?.let { touristInfo ->
+                            etFirstname.setText(touristInfo.firstName, TextView.BufferType.EDITABLE)
+                            etSurname.setText(touristInfo.surname, TextView.BufferType.EDITABLE)
+                            etBirthday.setText(touristInfo.birthday, TextView.BufferType.EDITABLE)
+                            etCitizenship.setText(touristInfo.citizenShip, TextView.BufferType.EDITABLE)
+                            etPassportNumber.setText(touristInfo.passportNumber, TextView.BufferType.EDITABLE)
+                            etPassportValidity.setText(touristInfo.passportValidity, TextView.BufferType.EDITABLE)
+                        }
+                    }
+
                     textViewTouristNumber.text = getTouristNumberStringByNumber()
 
                     imageViewOpenClose.setOnClickListener {
@@ -449,7 +480,7 @@ class BookingFragment: Fragment() {
                 }
             }
 
-            fun isFillAllData(): Boolean {
+            fun checkIsFillAllDataAndGet(): TouristInfo? {
                 val isAllFillSet = mutableSetOf<Boolean>()
 
                 dataItemBinding?.let { itemBinding ->
@@ -463,7 +494,20 @@ class BookingFragment: Fragment() {
                     }
                 }
 
-                return !isAllFillSet.contains(false)
+                return if (!isAllFillSet.contains(false)) {
+                    with(dataItemBinding ?: return null) {
+                        TouristInfo(
+                            firstName = etFirstname.text.toString().trim(),
+                            surname = etSurname.text.toString().trim(),
+                            birthday = etBirthday.text.toString().trim(),
+                            citizenShip = etCitizenship.text.toString().trim(),
+                            passportNumber = etPassportNumber.text.toString().trim(),
+                            passportValidity = etPassportValidity.text.toString().trim()
+                        )
+                    }
+                }else {
+                    null
+                }
             }
 
             private fun getTouristNumberStringByNumber(): String {
@@ -509,11 +553,9 @@ class BookingFragment: Fragment() {
                 getString(R.string.booking_fragment_price_tour_price_title) to getString(R.string.price_in_rubles, price.tourPrice),
                 getString(R.string.booking_fragment_price_fuel_charge_title) to getString(R.string.price_in_rubles, price.fuelCharge),
                 getString(R.string.booking_fragment_price_service_charge_title) to getString(R.string.price_in_rubles, price.serviceCharge),
-                getString(R.string.booking_fragment_price_sum_charge_title) to getString(R.string.price_in_rubles, getSumPrice())
+                getString(R.string.booking_fragment_price_sum_charge_title) to getString(R.string.price_in_rubles, bookingViewModel.getSumPrice(price = price))
             )
         }
-
-        private fun getSumPrice() = price.tourPrice + price.fuelCharge + price.serviceCharge
 
         private inner class PriceItemsAdapter(
             private val listData: List<Pair<String, String>>
@@ -558,6 +600,10 @@ class BookingFragment: Fragment() {
             }else {
                 getString(R.string.booking_fragment_btn_pay_default_text)
             }
+
+            var userInfo: UserInfo? = null
+            var touristInfo: TouristInfo? = null
+
             with(viewBinding) {
                 btn.text = text
                 btn.setOnClickListener {
@@ -572,20 +618,28 @@ class BookingFragment: Fragment() {
                                 for (k in 0 until sectionTourist.itemCount) {
                                     val touristDataItem = sectionTourist.getItem(k)
                                     if (touristDataItem is TouristItem.TouristDataItem) {
-                                        if (!touristDataItem.isFillAllData()) {
+                                        val data = touristDataItem.checkIsFillAllDataAndGet()
+                                        if (data == null) {
                                             isAllFill = false
+                                        }else {
+                                            touristInfo = data
                                         }
                                     }
                                 }
                             }else if (item is UserInfoItem) {
-                                if (!item.isFillAllData()) {
+                                val data = item.checkIsFillAllDataAndGet()
+                                if (data == null) {
                                     isAllFill = false
+                                }else {
+                                    userInfo = data
                                 }
                             }
                         }
                     }
 
                     if (isAllFill) {
+                        userInfo?.let { bookingViewModel.saveUserInfo(userInfo = it) }
+                        touristInfo?.let { bookingViewModel.saveTouristInfo(touristInfo = it) }
                         findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
                     }else {
                         requireContext().showShortToast(message = getString(R.string.toast_error_not_fill_all_fields))

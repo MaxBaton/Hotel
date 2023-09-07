@@ -20,11 +20,13 @@ import com.maxbay.hotel.databinding.RoomItemBinding
 import com.maxbay.hotel.databinding.RoomPeculiarityItemBinding
 import com.maxbay.presentation.ui.common.MyDividerItemDecoration
 import com.maxbay.presentation.ui.common.showShortToast
+import com.maxbay.presentation.viewmodel.booking.BookingViewModel
 import com.maxbay.presentation.viewmodel.room.RoomViewModel
 
 class RoomsFragment: Fragment() {
     private var binding: FragmentRoomsBinding? = null
     private val roomViewModel: RoomViewModel by activityViewModels()
+    private val bookingViewModel: BookingViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRoomsBinding.inflate(inflater, container, false)
@@ -85,6 +87,8 @@ class RoomsFragment: Fragment() {
                     roomsPhotosAdapter.registerAdapterDataObserver(viewPagerIndicator.adapterDataObserver)
 
                     btnSelectRoom.setOnClickListener {
+                        bookingViewModel.resetUserInfo()
+                        bookingViewModel.resetTouristInfo()
                         findNavController().navigate(R.id.action_roomsFragment_to_bookingFragment)
                     }
                 }

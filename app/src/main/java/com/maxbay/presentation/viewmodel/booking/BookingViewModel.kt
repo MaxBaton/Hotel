@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maxbay.domain.booking.models.BookingDataDomain
+import com.maxbay.domain.booking.models.TouristInfo
+import com.maxbay.domain.booking.models.UserInfo
 import com.maxbay.domain.booking.usecases.GetBookingPrice
 import com.maxbay.domain.booking.usecases.tourist.GetSumPrice
 import com.maxbay.domain.other.Constants
@@ -23,6 +25,14 @@ class BookingViewModel @Inject constructor(
     private val bookingMutableLiveData = MutableLiveData<List<BookingDataDomain>?>()
     val bookingLiveData: LiveData<List<BookingDataDomain>?>
         get() = bookingMutableLiveData
+    // UserInfo
+    private val userInfoMutableLiveData = MutableLiveData<UserInfo?>()
+    val userInfoLiveData: LiveData<UserInfo?>
+        get() = userInfoMutableLiveData
+    // TouristInfo
+    private val touristInfoMutableLiveData = MutableLiveData<TouristInfo?>()
+    val touristInfoLiveData: LiveData<TouristInfo?>
+        get() = touristInfoMutableLiveData
 
     init {
         getBookingPrice()
@@ -47,5 +57,21 @@ class BookingViewModel @Inject constructor(
         }else {
             Constants.Error.ERROR_INT
         }
+    }
+
+    fun saveUserInfo(userInfo: UserInfo) {
+        userInfoMutableLiveData.postValue(userInfo)
+    }
+
+    fun resetUserInfo() {
+        userInfoMutableLiveData.postValue(null)
+    }
+
+    fun saveTouristInfo(touristInfo: TouristInfo) {
+        touristInfoMutableLiveData.postValue(touristInfo)
+    }
+
+    fun resetTouristInfo() {
+        touristInfoMutableLiveData.postValue(null)
     }
 }
