@@ -17,7 +17,6 @@ import com.maxbay.hotel.databinding.FragmentRoomsBinding
 import com.maxbay.hotel.databinding.PeculiarityItemBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
 import com.maxbay.hotel.databinding.RoomItemBinding
-import com.maxbay.hotel.databinding.RoomPeculiarityItemBinding
 import com.maxbay.presentation.ui.common.MyDividerItemDecoration
 import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.booking.BookingViewModel
@@ -88,7 +87,7 @@ class RoomsFragment: Fragment() {
 
                     btnSelectRoom.setOnClickListener {
                         bookingViewModel.resetUserInfo()
-                        bookingViewModel.resetTouristInfo()
+                        bookingViewModel.resetTouristsInfo()
                         findNavController().navigate(R.id.action_roomsFragment_to_bookingFragment)
                     }
                 }

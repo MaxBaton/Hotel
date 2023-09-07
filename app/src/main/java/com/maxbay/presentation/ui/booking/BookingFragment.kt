@@ -397,11 +397,24 @@ class BookingFragment: Fragment() {
         val section = Section()
 
         override fun bind(viewBinding: TouristItemBinding, position: Int) {
-            with(viewBinding) {
+            bookingViewModel.touristsInfoLiveData.observe(viewLifecycleOwner) { touristsWithNull ->
                 section.let {
                     it.setFooter(TouristFooter())
-                    it.add(TouristDataItem(touristNumber = section.itemCount))
+
+                    if (touristsWithNull.isNullOrEmpty()) {
+                        it.add(TouristDataItem(touristNumber = section.itemCount))
+                    }else {
+                        touristsWithNull.forEachIndexed { index, touristInfo ->
+                            it.add(TouristDataItem(
+                                touristNumber = index + 1,
+                                touristInfo = touristInfo
+                            ))
+                        }
+                    }
                 }
+            }
+
+            with(viewBinding) {
                 groupieAdapter.add(section)
 
                 recyclerViewTourists.let {
@@ -418,7 +431,8 @@ class BookingFragment: Fragment() {
         override fun initializeViewBinding(view: View) = TouristItemBinding.bind(view)
 
         inner class TouristDataItem(
-            private val touristNumber: Int
+            private val touristNumber: Int,
+            private val touristInfo: TouristInfo? = null
         ): BindableItem<TouristDataItemBinding>() {
             private var isOpen: Boolean = true
             private var dataItemBinding: TouristDataItemBinding? = null
@@ -426,15 +440,13 @@ class BookingFragment: Fragment() {
                 dataItemBinding = viewBinding
 
                 with(viewBinding) {
-                    bookingViewModel.touristInfoLiveData.observe(viewLifecycleOwner) { touristInfoWithNull ->
-                        touristInfoWithNull?.let { touristInfo ->
-                            etFirstname.setText(touristInfo.firstName, TextView.BufferType.EDITABLE)
-                            etSurname.setText(touristInfo.surname, TextView.BufferType.EDITABLE)
-                            etBirthday.setText(touristInfo.birthday, TextView.BufferType.EDITABLE)
-                            etCitizenship.setText(touristInfo.citizenShip, TextView.BufferType.EDITABLE)
-                            etPassportNumber.setText(touristInfo.passportNumber, TextView.BufferType.EDITABLE)
-                            etPassportValidity.setText(touristInfo.passportValidity, TextView.BufferType.EDITABLE)
-                        }
+                    touristInfo?.let { info ->
+                        etFirstname.setText(info.firstName, TextView.BufferType.EDITABLE)
+                        etSurname.setText(info.surname, TextView.BufferType.EDITABLE)
+                        etBirthday.setText(info.birthday, TextView.BufferType.EDITABLE)
+                        etCitizenship.setText(info.citizenShip, TextView.BufferType.EDITABLE)
+                        etPassportNumber.setText(info.passportNumber, TextView.BufferType.EDITABLE)
+                        etPassportValidity.setText(info.passportValidity, TextView.BufferType.EDITABLE)
                     }
 
                     textViewTouristNumber.text = getTouristNumberStringByNumber()
@@ -601,13 +613,14 @@ class BookingFragment: Fragment() {
                 getString(R.string.booking_fragment_btn_pay_default_text)
             }
 
-            var userInfo: UserInfo? = null
-            var touristInfo: TouristInfo? = null
+            val touristsInfo = mutableListOf<TouristInfo>()
 
             with(viewBinding) {
                 btn.text = text
                 btn.setOnClickListener {
                     var isAllFill = true
+                    var userInfo: UserInfo? = null
+                    touristsInfo.clear()
 
                     for (i in 0 until groupieAdapter.groupCount) {
                         val section = groupieAdapter.getGroupAtAdapterPosition(i)
@@ -618,20 +631,20 @@ class BookingFragment: Fragment() {
                                 for (k in 0 until sectionTourist.itemCount) {
                                     val touristDataItem = sectionTourist.getItem(k)
                                     if (touristDataItem is TouristItem.TouristDataItem) {
-                                        val data = touristDataItem.checkIsFillAllDataAndGet()
-                                        if (data == null) {
+                                        val touristInfo = touristDataItem.checkIsFillAllDataAndGet()
+                                        if (touristInfo == null) {
                                             isAllFill = false
                                         }else {
-                                            touristInfo = data
+                                            touristsInfo.add(touristInfo)
                                         }
                                     }
                                 }
                             }else if (item is UserInfoItem) {
-                                val data = item.checkIsFillAllDataAndGet()
-                                if (data == null) {
+                                val userInfoData = item.checkIsFillAllDataAndGet()
+                                if (userInfoData == null) {
                                     isAllFill = false
                                 }else {
-                                    userInfo = data
+                                    userInfo = userInfoData
                                 }
                             }
                         }
@@ -639,7 +652,9 @@ class BookingFragment: Fragment() {
 
                     if (isAllFill) {
                         userInfo?.let { bookingViewModel.saveUserInfo(userInfo = it) }
-                        touristInfo?.let { bookingViewModel.saveTouristInfo(touristInfo = it) }
+                        if (touristsInfo.isNotEmpty()) {
+                            bookingViewModel.saveTouristsInfo(tourists = touristsInfo)
+                        }
                         findNavController().navigate(R.id.action_bookingFragment_to_paidFragment)
                     }else {
                         requireContext().showShortToast(message = getString(R.string.toast_error_not_fill_all_fields))

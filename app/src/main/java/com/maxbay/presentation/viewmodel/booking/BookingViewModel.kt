@@ -30,12 +30,13 @@ class BookingViewModel @Inject constructor(
     val userInfoLiveData: LiveData<UserInfo?>
         get() = userInfoMutableLiveData
     // TouristInfo
-    private val touristInfoMutableLiveData = MutableLiveData<TouristInfo?>()
-    val touristInfoLiveData: LiveData<TouristInfo?>
-        get() = touristInfoMutableLiveData
+    private val touristsInfoMutableLiveData = MutableLiveData<List<TouristInfo>?>()
+    val touristsInfoLiveData: LiveData<List<TouristInfo>?>
+        get() = touristsInfoMutableLiveData
 
     init {
         getBookingPrice()
+        touristsInfoMutableLiveData.postValue(null)
     }
 
     private fun getBookingPrice() {
@@ -67,11 +68,11 @@ class BookingViewModel @Inject constructor(
         userInfoMutableLiveData.postValue(null)
     }
 
-    fun saveTouristInfo(touristInfo: TouristInfo) {
-        touristInfoMutableLiveData.postValue(touristInfo)
+    fun saveTouristsInfo(tourists: List<TouristInfo>) {
+        touristsInfoMutableLiveData.postValue(tourists)
     }
 
-    fun resetTouristInfo() {
-        touristInfoMutableLiveData.postValue(null)
+    fun resetTouristsInfo() {
+        touristsInfoMutableLiveData.postValue(null)
     }
 }
