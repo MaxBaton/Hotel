@@ -24,4 +24,5 @@
     <color name="cursor_color">@color/black</color>
     <color name="successful_pay">#F6F6F9</color>
     <color name="text_input_hint_text_color">#A9ABB7</color>
+    <color name="icon_fill">#00000000</color>
 </resources>

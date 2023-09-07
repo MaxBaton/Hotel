@@ -7,7 +7,7 @@
                 android:bottomLeftRadius="@dimen/round_button_corner_radius"
                 android:bottomRightRadius="@dimen/round_button_corner_radius"
                 />
-            <solid android:color="@color/white"/>
+            <solid android:color="@color/fragment_background_main"/>
         </shape>
     </item>
 
