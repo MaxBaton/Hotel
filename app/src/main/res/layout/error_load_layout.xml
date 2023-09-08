@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_main"
+    android:id="@+id/layout">
+
+    <TextView
+        android:id="@+id/text_view_error_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/error_load_text"
+        android:textSize="@dimen/error_load_text_view_size"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="@+id/image_view_reload"
+        app:layout_constraintEnd_toStartOf="@id/image_view_reload"
+        app:layout_constraintTop_toTopOf="@+id/image_view_reload" />
+
+    <ImageView
+        android:id="@+id/image_view_reload"
+        android:layout_width="@dimen/error_load_icon_update_sizes"
+        android:layout_height="@dimen/error_load_icon_update_sizes"
+        app:layout_constraintBottom_toTopOf="@id/guideline_center_horizontal"
+        app:layout_constraintStart_toEndOf="@id/text_view_error_message"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/icon_update" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        style="@style/Hotel_GuidelineVertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        style="@style/Hotel_GuidelineVertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center_horizontal"
+        style="@style/Hotel_GuidelineHorizontal"
+        app:layout_constraintGuide_percent="0.45"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

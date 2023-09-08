@@ -52,6 +52,9 @@
         Как только мы получим ответ от туроператора, Вам на почту придет уведомление.</string>
     <string name="paid_fragment_super_button">Супер</string>
 
+<!--    Error layout-->
+    <string name="error_load_text">Ошибка загрузки</string>
+
 <!--    Toasts-->
     <string name="toast_error_load_hotel_info">Ошибка загрузки данных об отеле!</string>
     <string name="toast_error_load_rooms_info">Ошибка загрузки данных о номерах!</string>

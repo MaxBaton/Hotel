@@ -75,8 +75,14 @@ class BookingFragment: Fragment() {
                 if (bookingListData != null) {
                     populateAdapterBooking(bookingListData = bookingListData)
                 }else {
-                    requireContext().showShortToast(message = getString(R.string.toast_error_load_booking_info))
+                    errorLayout.layout.visibility = View.VISIBLE
                 }
+            }
+
+            errorLayout.imageViewReload.setOnClickListener {
+                progressBar.visibility = View.VISIBLE
+                errorLayout.layout.visibility = View.GONE
+                bookingViewModel.getBookingPrice()
             }
 
             actionBar.imageViewBack.setOnClickListener {

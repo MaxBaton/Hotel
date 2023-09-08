@@ -1,5 +1,5 @@
 <vector android:height="@dimen/hotel_fragment_icon_update_sizes"
-    android:tint="@color/black"
+    android:tint="@color/icon_update"
     android:viewportHeight="24"
     android:viewportWidth="24"
     android:width="@dimen/hotel_fragment_icon_update_sizes" xmlns:android="http://schemas.android.com/apk/res/android">

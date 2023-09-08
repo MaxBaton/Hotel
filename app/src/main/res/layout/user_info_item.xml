@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/round_corners_fragment_item"
-    android:layout_marginTop="@dimen/default_margin_top_elements">
+    android:layout_marginTop="@dimen/default_margin_top_bottom_elements">
 
     <TextView
         android:id="@+id/text_view_user_info"
@@ -13,8 +13,8 @@
         android:textStyle="bold"
         android:textSize="@dimen/hotel_fragment_text_view_hotel_name_size"
         android:text="@string/booking_fragment_arrival_user_info_title"
-        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
+        android:layout_marginStart="@dimen/default_margin_start_end_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="@id/text_view_user_info"
         app:layout_constraintTop_toBottomOf="@id/text_view_user_info"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements">
+        android:layout_marginEnd="@dimen/default_margin_start_end_elements">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_phone_number"
@@ -60,9 +60,9 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/default_text_size"
         android:text="@string/booking_fragment_arrival_user_additional_info"
-        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
-        android:layout_marginBottom="@dimen/default_margin_top_elements"
+        android:layout_marginStart="@dimen/default_margin_start_end_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom_elements"
         app:layout_constraintEnd_toEndOf="@id/txt_input_layout_phone_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_input_layout_email"

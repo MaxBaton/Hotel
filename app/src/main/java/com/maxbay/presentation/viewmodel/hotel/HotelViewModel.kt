@@ -24,7 +24,7 @@ class HotelViewModel @Inject constructor(
         getHotelInfo()
     }
 
-    private fun getHotelInfo() {
+    fun getHotelInfo() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val hotel = getHotelInfo.get()
