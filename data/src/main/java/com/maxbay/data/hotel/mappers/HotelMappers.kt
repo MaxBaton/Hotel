@@ -19,20 +19,6 @@ fun AboutTheHotelData.mapToAboutTheHotel(): AboutTheHotel {
     )
 }
 
-fun Hotel.mapToHotelData(): HotelData {
-    return HotelData(
-        id = this.id,
-        name = this.name,
-        about_the_hotel = this.aboutTheHotel.mapToAboutTheHotelData(),
-        adress = this.address,
-        image_urls = this.imageUrls,
-        minimal_price = this.minimalPrice,
-        price_for_it = this.priceForIt,
-        rating = this.rating,
-        rating_name = this.ratingName
-    )
-}
-
 fun HotelData.mapToHotel(): Hotel {
     return Hotel(
         id = this.id,

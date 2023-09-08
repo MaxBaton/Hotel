@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.maxbay.domain.other.GetRandomOrderNumber
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentPaidBinding
-import com.maxbay.presentation.ui.common.showShortToast
 
 class PaidFragment: Fragment() {
     private var binding: FragmentPaidBinding? = null

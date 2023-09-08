@@ -15,10 +15,8 @@
     <color name="hotel_address_text_view">#0D72FF</color>
     <color name="about_hotel_layout_background">#FBFBFC</color>
     <color name="about_hotel_text_color">#E6000000</color>
-    <color name="room_detail_background">#4D0D72FF</color>
     <color name="text_subtitle">#828796</color>
     <color name="peculiarity_item_background_color">#FBFBFC</color>
-    <color name="about_hotel_text">#E6000000</color>
     <color name="room_details_background">#1A0D72FF</color>
     <color name="error_item">#26EB5757</color>
     <color name="cursor_color">@color/black</color>

@@ -56,15 +56,10 @@
     <string name="error_load_text">Ошибка загрузки</string>
 
 <!--    Toasts-->
-    <string name="toast_error_load_hotel_info">Ошибка загрузки данных об отеле!</string>
-    <string name="toast_error_load_rooms_info">Ошибка загрузки данных о номерах!</string>
-    <string name="toast_error_load_booking_info">Ошибка загрузки данных о бронировании!</string>
-    <string name="toast_error_load_price_info">Ошибка загрузки данных о ценах!</string>
     <string name="toast_error_not_fill_all_fields">Не все поля заполнены!</string>
 
 <!--    Action bar-->
     <string name="action_bar_title_hotel">Отель</string>
-    <string name="action_bar_title_rooms">Номера</string>
     <string name="action_bar_title_booking">Бронирование</string>
     <string name="action_bar_title_paid">Заказ оплачен</string>
 
