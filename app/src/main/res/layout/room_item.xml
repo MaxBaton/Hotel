@@ -10,7 +10,7 @@
     <FrameLayout
         android:id="@+id/photos_layout"
         style="@style/Hotel_FrameLayoutPhotos"
-        android:layout_marginTop="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginTop="@dimen/default_margin_start_end_elements"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -37,8 +37,8 @@
         android:textSize="@dimen/hotel_fragment_text_view_hotel_name_size"
         android:textStyle="bold"
         tools:text="Room name"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
+        android:layout_marginEnd="@dimen/default_margin_start_end_elements"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/photos_layout"
         app:layout_constraintStart_toStartOf="@id/photos_layout"
@@ -48,7 +48,7 @@
         android:id="@+id/recycler_view_room_peculiarities"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
         app:layout_constraintStart_toStartOf="@id/text_view_room_name"
         app:layout_constraintEnd_toEndOf="@id/text_view_room_name"
         app:layout_constraintTop_toBottomOf="@id/text_view_room_name"
@@ -65,7 +65,7 @@
         android:orientation="horizontal"
         android:padding="@dimen/hotel_fragment_detail_room_details_padding"
         android:background="@color/room_details_background"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
         app:layout_constraintTop_toBottomOf="@id/recycler_view_room_peculiarities"
         app:layout_constraintStart_toStartOf="@id/recycler_view_room_peculiarities">
 

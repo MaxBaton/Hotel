@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="@dimen/default_margin_top_elements"
+    android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
     android:background="@drawable/round_corners_fragment_item">
 
     <ImageView
@@ -14,9 +14,9 @@
         android:src="@drawable/icon_tourist_header_up"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:layout_marginEnd="@dimen/hotel_fragment_margin_start_end_elements"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
-        android:layout_marginBottom="@dimen/default_margin_top_elements"
+        android:layout_marginEnd="@dimen/default_margin_start_end_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom_elements"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/view_delimiter"/>
@@ -29,7 +29,7 @@
         android:textSize="@dimen/booking_fragment_tourist_header_footer_text_size"
         tools:text="Первый турист"
         android:textAlignment="textStart"
-        android:layout_marginStart="@dimen/hotel_fragment_margin_start_end_elements"
+        android:layout_marginStart="@dimen/default_margin_start_end_elements"
         app:layout_constraintEnd_toStartOf="@id/image_view_open_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/image_view_open_close"
@@ -43,14 +43,14 @@
         android:visibility="invisible"
         tools:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/image_view_open_close"
-        android:layout_marginTop="@dimen/default_margin_top_elements"
+        android:layout_marginTop="@dimen/default_margin_top_bottom_elements"
         />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layout_input_data"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_margin_top_elements"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom_elements"
         app:layout_constraintStart_toStartOf="@id/text_view_tourist_number"
         app:layout_constraintEnd_toEndOf="@id/image_view_open_close"
         app:layout_constraintTop_toBottomOf="@id/view_delimiter"

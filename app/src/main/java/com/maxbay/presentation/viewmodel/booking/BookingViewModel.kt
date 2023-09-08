@@ -39,7 +39,7 @@ class BookingViewModel @Inject constructor(
         touristsInfoMutableLiveData.postValue(null)
     }
 
-    private fun getBookingPrice() {
+    fun getBookingPrice() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val listBookingData = getBookingPrice.get()

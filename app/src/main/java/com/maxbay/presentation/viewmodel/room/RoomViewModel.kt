@@ -24,7 +24,7 @@ class RoomViewModel @Inject constructor(
         getRooms()
     }
 
-    private fun getRooms() {
+    fun getRooms() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val rooms = getRooms.getRooms() ?: emptyList()

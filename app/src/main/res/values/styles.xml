@@ -35,7 +35,7 @@
         <item name="android:background">@drawable/round_text_input_layout</item>
         <item name="android:paddingTop">@dimen/txt_input_layout_paddings_top</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/default_margin_top_elements</item>
+        <item name="android:layout_marginTop">@dimen/default_margin_top_bottom_elements</item>
     </style>
 
     <style name="Hotel_TextInputLayoutUser" parent="Hotel_TextInputLayout">
@@ -57,8 +57,8 @@
     <style name="Hotel_FrameLayoutPhotos">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/hotel_fragment_view_pager_height</item>
-        <item name="android:layout_marginStart">@dimen/hotel_fragment_margin_start_end_elements</item>
-        <item name="android:layout_marginEnd">@dimen/hotel_fragment_margin_start_end_elements</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_start_end_elements</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_start_end_elements</item>
     </style>
 
     <style name="Hotel_PageIndicatorPhotos">
@@ -75,7 +75,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/hotel_fragment_common_data_min_price_text_size</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginTop">@dimen/default_margin_top_elements</item>
+        <item name="android:layout_marginTop">@dimen/default_margin_top_bottom_elements</item>
     </style>
 
     <style name="Hotel_TextViewPriceDescription">
@@ -93,10 +93,19 @@
         <item name="android:textAlignment">textStart</item>
     </style>
 
-    <style name="Hotel_GuidelineVerticalBookingDataItem">
+    <style name="Hotel_GuidelineVertical">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Hotel_GuidelineHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Hotel_GuidelineVerticalBookingDataItem" parent="Hotel_GuidelineVertical">
         <item name="layout_constraintGuide_percent">0.4</item>
     </style>
 </resources>
