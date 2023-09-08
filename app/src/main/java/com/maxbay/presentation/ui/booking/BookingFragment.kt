@@ -398,7 +398,7 @@ class BookingFragment: Fragment() {
         }
     }
 
-    private inner class TouristItem(): BindableItem<TouristItemBinding>() {
+    private inner class TouristItem : BindableItem<TouristItemBinding>() {
         private val groupieAdapter = GroupieAdapter()
         val section = Section()
 

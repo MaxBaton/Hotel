@@ -20,7 +20,6 @@ import com.maxbay.hotel.databinding.PeculiarityItemBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
 import com.maxbay.hotel.databinding.RoomItemBinding
 import com.maxbay.presentation.ui.common.MyDividerItemDecoration
-import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.booking.BookingViewModel
 import com.maxbay.presentation.viewmodel.room.RoomViewModel
 

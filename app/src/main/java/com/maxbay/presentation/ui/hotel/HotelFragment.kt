@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.maxbay.domain.hotel.models.AboutTheHotelAction
@@ -24,13 +23,10 @@ import com.maxbay.hotel.databinding.PeculiarityItemBinding
 import com.maxbay.hotel.databinding.PhotoItemBinding
 import com.maxbay.hotel.databinding.RoundButtonItemBinding
 import com.maxbay.presentation.ui.common.MyDividerItemDecoration
-import com.maxbay.presentation.ui.common.showShortToast
 import com.maxbay.presentation.viewmodel.hotel.HotelViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem
-import kotlin.math.ceil
-import kotlin.math.sqrt
 
 class HotelFragment: Fragment() {
     private var binding: FragmentHotelBinding? = null
@@ -205,9 +201,7 @@ class HotelFragment: Fragment() {
                         peculiarities = it.aboutTheHotel.peculiarities
                     )
                     // Actions
-                    recyclerViewActions.let {
-                        it.adapter = AboutHotelActionsAdapter(actions = actions)
-                    }
+                    recyclerViewActions.adapter = AboutHotelActionsAdapter(actions = actions)
                 }
             }
         }
