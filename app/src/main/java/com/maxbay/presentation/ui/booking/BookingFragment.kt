@@ -3,7 +3,6 @@ package com.maxbay.presentation.ui.booking
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +20,9 @@ import com.maxbay.domain.booking.models.BookingDataDomain
 import com.maxbay.domain.booking.models.TouristInfo
 import com.maxbay.domain.booking.models.UserInfo
 import com.maxbay.domain.booking.usecases.email.IsValidEmail
+import com.maxbay.domain.booking.usecases.phone.GetFirstPhoneKeySymbolIndex
+import com.maxbay.domain.booking.usecases.phone.GetInputSymbol
 import com.maxbay.domain.booking.usecases.phone.GetLastNumberPosition
-import com.maxbay.domain.booking.usecases.phone.GetNewPhoneStrAfterInput
 import com.maxbay.domain.booking.usecases.phone.IsFillPhoneNumber
 import com.maxbay.domain.other.Constants
 import com.maxbay.hotel.R
@@ -43,7 +43,6 @@ import com.maxbay.presentation.viewmodel.booking.BookingViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.viewbinding.BindableItem
-import kotlin.text.StringBuilder
 
 class BookingFragment: Fragment() {
     private var binding: FragmentBookingBinding? = null
@@ -268,7 +267,6 @@ class BookingFragment: Fragment() {
                     if (hasFocus && isBlankPhone) {
                         etPhoneNumber.setText(Constants.Phone.TEMPLATE, TextView.BufferType.EDITABLE)
                     }
-                    etPhoneNumber.setSelection(etPhoneNumber.text.toString().trim().length)
 
                     val isValidPhone = IsFillPhoneNumber.isFill(phoneNumber = etPhoneNumber.text.toString().trim())
                     val background = if (!hasFocus && !isValidPhone) {
@@ -285,64 +283,55 @@ class BookingFragment: Fragment() {
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                         val currInputStr = s?.toString() ?: Constants.Error.EMPTY_STRING
                         if (
-                                currPhoneStr != currInputStr &&
-                                currInputStr != Constants.Phone.TEMPLATE &&
-                                currInputStr.isNotBlank()
-                            ) {
-                            try {
-                                if (currInputStr.length > currPhoneStr.length) {
-                                    // Add
-                                    if (IsFillPhoneNumber.isFill(phoneNumber = currPhoneStr)) {
-                                        etPhoneNumber.setText(currPhoneStr, TextView.BufferType.EDITABLE)
-                                    }else {
-                                        val inputNumberStr = currInputStr[currInputStr.length - 1].toString()
-                                        val newStr = GetNewPhoneStrAfterInput.get(
-                                            currStr = currInputStr,
-                                            inputNumberStr = inputNumberStr
+                            currInputStr != Constants.Error.EMPTY_STRING &&
+                            currPhoneStr != Constants.Error.EMPTY_STRING &&
+                            currInputStr != currPhoneStr
+                        ) {
+                            if (currInputStr.length > currPhoneStr.length) {
+                                // Add
+                                if (IsFillPhoneNumber.isFill(phoneNumber = currPhoneStr)) {
+                                    etPhoneNumber.setText(currPhoneStr, TextView.BufferType.EDITABLE)
+                                }else {
+                                    val inputSymbol = GetInputSymbol.get(
+                                        oldStr = currPhoneStr,
+                                        newStr = currInputStr
+                                    )
+                                    val firstKeyPhoneSymbolPosition = GetFirstPhoneKeySymbolIndex.get(str = currPhoneStr)
+                                    if (firstKeyPhoneSymbolPosition != Constants.Error.ERROR_INT) {
+                                        val newStr = replaceSymbolInStrAndGet(
+                                            index = firstKeyPhoneSymbolPosition,
+                                            strForReplace = inputSymbol
                                         )
                                         if (newStr != Constants.Error.EMPTY_STRING) {
                                             currPhoneStr = newStr
                                             etPhoneNumber.setText(newStr, TextView.BufferType.EDITABLE)
                                         }
                                     }
-                                }else {
-                                    // Delete
-                                    val lastNumberIndex = GetLastNumberPosition.get(str = currPhoneStr)
-                                    if (lastNumberIndex != Constants.Error.ERROR_INT) {
-                                        strBuilder.clear()
-                                        strBuilder.append(currPhoneStr)
-
-                                        val newStr = strBuilder.replace(
-                                            lastNumberIndex,
-                                            lastNumberIndex + 1,
-                                            Constants.Phone.KEY_SYMBOL
-                                        ).toString()
-                                        if (newStr != Constants.Error.EMPTY_STRING) {
-                                            currPhoneStr = newStr
-                                            etPhoneNumber.setText(newStr, TextView.BufferType.EDITABLE)
-                                        }
-                                    }else {
-                                        etPhoneNumber.setText(currPhoneStr, TextView.BufferType.EDITABLE)
-                                    }
                                 }
-                            }catch (e: Exception) {
-                                Log.d(Constants.Logs.OTHER_ERROR, e.message.toString())
+                            }else {
+                                // Delete
+                                val lastNumberIndex = GetLastNumberPosition.get(str = currPhoneStr)
+                                if (lastNumberIndex != Constants.Error.ERROR_INT) {
+                                    val newStr = replaceSymbolInStrAndGet(
+                                        index = lastNumberIndex,
+                                        strForReplace = Constants.Phone.KEY_SYMBOL
+                                    )
+
+                                    if (newStr != Constants.Error.EMPTY_STRING) {
+                                        currPhoneStr = newStr
+                                        etPhoneNumber.setText(newStr, TextView.BufferType.EDITABLE)
+                                    }
+                                }else {
+                                    etPhoneNumber.setText(currPhoneStr, TextView.BufferType.EDITABLE)
+                                }
                             }
+                        }else {
+                            currPhoneStr = currInputStr
                         }
                     }
 
                     override fun afterTextChanged(s: Editable?) {
-                        s?.toString()?.let { str ->
-                            try {
-                                if (currPhoneStr != Constants.Error.EMPTY_STRING) {
-                                    etPhoneNumber.setSelection(currPhoneStr.length)
-                                }else {
-                                    etPhoneNumber.setSelection(str.length)
-                                }
-                            }catch (e: IndexOutOfBoundsException) {
-                                Log.d(Constants.Logs.OTHER_ERROR, e.message.toString())
-                            }
-                        }
+                        etPhoneNumber.setSelection(etPhoneNumber.text.toString().trim().length)
                     }
                 })
 
@@ -360,6 +349,17 @@ class BookingFragment: Fragment() {
         override fun getLayout() = R.layout.user_info_item
 
         override fun initializeViewBinding(view: View) = UserInfoItemBinding.bind(view)
+
+        private fun replaceSymbolInStrAndGet(index: Int, strForReplace: String): String {
+            strBuilder.clear()
+            strBuilder.append(currPhoneStr)
+
+            return strBuilder.replace(
+                index,
+                index + 1,
+                strForReplace
+            ).toString()
+        }
 
         fun checkIsFillAllDataAndGet(): UserInfo? {
             val isAllFillSet = mutableSetOf<Boolean>()

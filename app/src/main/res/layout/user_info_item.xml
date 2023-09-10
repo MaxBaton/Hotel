@@ -33,7 +33,9 @@
             android:hint="@string/booking_fragment_arrival_user_phone_number_hint"
             android:inputType="numberDecimal"
             android:digits="0123456789"
-            android:cursorVisible="false"/>
+            android:cursorVisible="false"
+            android:textIsSelectable="false"
+            android:selectAllOnFocus="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
