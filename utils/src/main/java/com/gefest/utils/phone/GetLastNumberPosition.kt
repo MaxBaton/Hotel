@@ -1,6 +1,6 @@
 package com.gefest.utils.phone
 
-import com.gefest.utils.Constants
+import com.gefest.utils.other.Constants
 
 
 object GetLastNumberPosition {

@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.gefest.utils.Constants
+import com.gefest.utils.other.Constants
 import com.maxbay.domain.room.models.Room
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentRoomsBinding

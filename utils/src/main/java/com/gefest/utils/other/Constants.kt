@@ -1,4 +1,4 @@
-package com.gefest.utils
+package com.gefest.utils.other
 
 object Constants {
     object Logs {

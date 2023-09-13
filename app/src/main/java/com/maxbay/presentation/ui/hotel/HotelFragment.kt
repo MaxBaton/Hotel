@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.maxbay.domain.hotel.models.AboutTheHotelAction
 import com.maxbay.domain.hotel.models.Hotel
-import com.gefest.utils.Constants
+import com.gefest.utils.other.Constants
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.AboutHotelActionItemBinding
 import com.maxbay.hotel.databinding.FragmentHotelBinding

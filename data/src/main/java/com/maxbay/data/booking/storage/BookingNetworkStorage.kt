@@ -6,7 +6,7 @@ import com.maxbay.data.booking.mappers.mapToBookingData
 import com.maxbay.data.booking.mappers.mapToBookingHotelData
 import com.maxbay.data.booking.mappers.mapToBookingPriceData
 import com.maxbay.data.booking.models.BookingDatas
-import com.gefest.utils.Constants
+import com.gefest.utils.other.Constants
 
 class BookingNetworkStorage(private val bookingApi: BookingApi): BookingStorage {
     override suspend fun getBookingPrice(): List<BookingDatas>? {
@@ -18,7 +18,7 @@ class BookingNetworkStorage(private val bookingApi: BookingApi): BookingStorage 
                 bookingCommonData.mapToBookingPriceData()
             )
         }catch (e: Exception) {
-            Log.d(com.gefest.utils.Constants.Logs.NETWORK_ERROR, e.message.toString())
+            Log.d(Constants.Logs.NETWORK_ERROR, e.message.toString())
             null
         }
     }

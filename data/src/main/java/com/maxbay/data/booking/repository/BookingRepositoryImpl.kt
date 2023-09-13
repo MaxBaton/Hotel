@@ -1,7 +1,7 @@
 package com.maxbay.data.booking.repository
 
 import android.util.Log
-import com.gefest.utils.Constants
+import com.gefest.utils.other.Constants
 import com.maxbay.data.booking.mappers.mapToListBookingDataDomain
 import com.maxbay.data.booking.storage.BookingStorage
 import com.maxbay.domain.booking.models.BookingDataDomain
