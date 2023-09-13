@@ -8,8 +8,8 @@ import com.maxbay.domain.booking.models.BookingDataDomain
 import com.maxbay.domain.booking.models.TouristInfo
 import com.maxbay.domain.booking.models.UserInfo
 import com.maxbay.domain.booking.usecases.GetBookingPrice
-import com.maxbay.domain.booking.usecases.tourist.GetSumPrice
-import com.maxbay.domain.other.Constants
+import com.maxbay.domain.booking.usecases.GetSumPrice
+import com.gefest.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

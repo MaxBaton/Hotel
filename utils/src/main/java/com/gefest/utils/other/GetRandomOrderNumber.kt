@@ -1,4 +1,4 @@
-package com.maxbay.domain.other
+package com.gefest.utils.other
 
 object GetRandomOrderNumber {
     fun get(): Int {

@@ -18,3 +18,4 @@ rootProject.name = "Hotel"
 include(":app")
 include(":domain")
 include(":data")
+include(":utils")

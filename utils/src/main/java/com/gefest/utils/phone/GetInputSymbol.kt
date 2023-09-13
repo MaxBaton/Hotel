@@ -1,6 +1,7 @@
-package com.maxbay.domain.booking.usecases.phone
+package com.gefest.utils.phone
 
-import com.maxbay.domain.other.Constants
+import com.gefest.utils.Constants
+
 
 object GetInputSymbol {
     fun get(oldStr: String, newStr: String): String {

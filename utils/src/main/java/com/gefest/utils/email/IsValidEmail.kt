@@ -1,4 +1,4 @@
-package com.maxbay.domain.booking.usecases.email
+package com.gefest.utils.email
 
 import java.util.regex.Pattern
 

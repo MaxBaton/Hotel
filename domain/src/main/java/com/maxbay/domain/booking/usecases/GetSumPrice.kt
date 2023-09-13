@@ -1,4 +1,4 @@
-package com.maxbay.domain.booking.usecases.tourist
+package com.maxbay.domain.booking.usecases
 
 import com.maxbay.domain.booking.models.BookingDataDomain
 

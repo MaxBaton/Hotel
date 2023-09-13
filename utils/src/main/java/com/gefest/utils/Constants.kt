@@ -1,4 +1,4 @@
-package com.maxbay.domain.other
+package com.gefest.utils
 
 object Constants {
     object Logs {

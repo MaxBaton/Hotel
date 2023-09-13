@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.maxbay.domain.other.GetRandomOrderNumber
+import com.gefest.utils.other.GetRandomOrderNumber
 import com.maxbay.hotel.R
 import com.maxbay.hotel.databinding.FragmentPaidBinding
 

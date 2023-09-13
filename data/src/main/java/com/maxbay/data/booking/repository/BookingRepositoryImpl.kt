@@ -1,11 +1,11 @@
 package com.maxbay.data.booking.repository
 
 import android.util.Log
+import com.gefest.utils.Constants
 import com.maxbay.data.booking.mappers.mapToListBookingDataDomain
 import com.maxbay.data.booking.storage.BookingStorage
 import com.maxbay.domain.booking.models.BookingDataDomain
 import com.maxbay.domain.booking.repository.BookingRepository
-import com.maxbay.domain.other.Constants
 
 class BookingRepositoryImpl(private val bookingStorage: BookingStorage): BookingRepository {
     override suspend fun getBookingPrice(): List<BookingDataDomain>? {

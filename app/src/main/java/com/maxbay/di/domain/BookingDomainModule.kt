@@ -2,7 +2,7 @@ package com.maxbay.di.domain
 
 import com.maxbay.domain.booking.repository.BookingRepository
 import com.maxbay.domain.booking.usecases.GetBookingPrice
-import com.maxbay.domain.booking.usecases.tourist.GetSumPrice
+import com.maxbay.domain.booking.usecases.GetSumPrice
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
